@@ -1,6 +1,7 @@
-import React from 'react';
-import Link from 'next/link';
-import {destinations} from './data.js';
+import React from "react"
+import Link from "next/link"
+import Image from "next/image.js"
+import { destinations } from "./data.js"
 
 export default function Destinations() {
   return (
@@ -10,12 +11,21 @@ export default function Destinations() {
         {destinations.map(({ name, banner, slug }) => (
           <div key={slug} className="group">
             <Link href={`/destinations/${slug}`} className="block relative">
-                <img src={banner} alt={name} className="w-full h-auto rounded-xl" />
-                <span className="absolute bottom-0 left-0 bg-black bg-opacity-50 text-white p-4">{name}</span>
+              <Image
+                src={banner}
+                alt={name}
+                title={name}
+                width={640}
+                height={400}
+                className="h-[400px] rounded-xl"
+              />
+              <span className="absolute bottom-0 left-0 bg-black bg-opacity-50 text-white p-4">
+                {name}
+              </span>
             </Link>
           </div>
         ))}
       </div>
     </main>
-  );
+  )
 }
