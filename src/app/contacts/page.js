@@ -53,7 +53,7 @@ export default function Contacts() {
   return (
     <main className="max-w-screen-xl mx-auto p-4">
       <h1 className="text-3xl font-semibold mb-6">Contacts</h1>
-      <div className="grid grid-cols-3 gap-8 items-start justify-start text-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start justify-start text-center p-4">
         <div className="text-box"><div className="text-title">Address:</div><div className="text-content">Winston Churchill Ave, Southsea, Portsmouth PO1 2UP, UK</div></div>
         <div className="text-box"><div className="text-title">Opening Hours:</div><div className="text-content">9am - 5pm</div></div>
         <div className="text-box"><div className="text-title">Phone:</div><div className="text-content"><a href="tel:+442392848484">023 9284 8484</a></div></div>
@@ -121,7 +121,7 @@ export default function Contacts() {
       <style jsx>{`
         .text-box {
           padding: 1.5rem;
-          min-height: 150px;
+          min-height: 130px;
           border: 1px solid #e2e8f0;
           border-radius: 0.5rem;
           background-color: #f7fafc;
@@ -129,10 +129,6 @@ export default function Contacts() {
         .text-title {
           font-size: 1.5rem;
           font-weight: 600;
-          margin-bottom: 1rem;
-        }
-        .text-content {
-          font-size: 1.1rem;
         }
       `}</style>
     </main>
