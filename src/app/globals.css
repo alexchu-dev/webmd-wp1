@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+Author: Alex Chu up2244885
+University of Portsmouth
+This is the Global CSS file for this project.
+This project has been created using Tailwind CSS for modern handling of CSS.
+To learn more about Tailwind CSS, visit their doc site https://tailwindcss.com/docs/installation
+
+This colour palette is inspired by https://www.sarahtitus.com/25-best-travel-destinations-color-palettes/
+To reserve the original colour palette, I have referenced the following colours, however I do not use it entirely which I also use
+my own colours arrangement.
+
+Travel Vibe Blue Palette
+#043263 #01afd1 #239efe #7dbafb #dbe5ff
+*/
+
+:root {
+  --foreground-rgb: 100, 100, 100;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+  --color1: #043263;
+  --color2: #01afd1;
+  --color3: #239efe;
+  --color4: #7dbafb;
+  --color5: #dbe5ff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* --foreground-rgb: 106, 199, 255; 
+    */
+    --foreground-rgb: 4,50,99;
+    --background-start-rgb: 255, 255, 255;
+    --background-end-rgb: 255, 255, 255;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+/* In case if I need to use these colours, these classes will be referenced. */
+.color1 {
+  color:var(--color1)
+}
+.color2 {
+  color:var(--color2)
+}
+.color3 {
+  color:var(--color3)
+}
+.color4 {
+  color:var(--color4)
+}
+.color5{
+  color:var(--color5)
+}
