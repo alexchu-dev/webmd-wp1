@@ -2,7 +2,7 @@ Welcome to Ports Travel - the simulated Travel Agency website for academic purpo
 
 This is a [Next.js](https://nextjs.org/) project, with MUI implemented.
 
-## Getting Started
+## Local view
 
 To run the development server, please use pnpm instead of npm.
 Run pnpm i to install the packages before you run the development environment.
@@ -14,6 +14,7 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deploy on Vercel
+## Staging environment deployed Vercel
+Demo site: [https://webmd-wp1.vercel.app/] https://webmd-wp1.vercel.app/
 
 This project is deployed on [Vercel Platform](https://webmd-wp1.vercel.app/)
