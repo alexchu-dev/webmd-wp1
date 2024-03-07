@@ -600,6 +600,32 @@ export default function Credits() {
       </p>
       <h3>Bali</h3>
       <p>
+        Photo by{" "}
+        <a href="https://unsplash.com/@alfianostn?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+          Alfiano Sutianto
+        </a>{" "}
+        on{" "}
+        <a href="https://unsplash.com/photos/island-under-white-sky-exFdOWkYBQw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+          Unsplash
+        </a>
+      </p>
+      <p>
+        Photo by{" "}
+        <a href="https://unsplash.com/@sebaspenalambarri?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+          Sebastian Pena Lambarri
+        </a>{" "}
+        on{" "}
+        <a href="https://unsplash.com/photos/pura-ulun-danu-bratan-indonesia-U_i6h9Y50wQ?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+          Unsplash
+        </a>
+      </p>
+      <p>
+        Photo by Oleksandr P:{" "}
+        <a href="https://www.pexels.com/photo/handara-gate-uner-blue-sky-2166553/">
+          https://www.pexels.com/photo/handara-gate-uner-blue-sky-2166553/
+        </a>
+      </p>
+      <p>
         Image by{" "}
         <a href="https://pixabay.com/users/kienhau-2462838/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=7969001">
           Trung Khong
@@ -639,11 +665,11 @@ export default function Credits() {
           Pixabay
         </a>
       </p>
-	  <style jsx>{`
-	  a {
-		text-decoration: underline;
-	  }
-	  `}</style>
-	</main>	
+      <style jsx>{`
+        a {
+          text-decoration: underline;
+        }
+      `}</style>
+    </main>
   )
 }
