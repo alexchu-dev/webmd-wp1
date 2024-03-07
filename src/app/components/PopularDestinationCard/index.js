@@ -31,9 +31,9 @@ export default function PopularDestinations() {
                 src={destination.image}
                 alt={destination.alt}
                 title={destination.alt}
-                width={800}
-                height={300}
-                style={{ objectFit: "cover" }}
+                width={640}
+                height={400}
+                className="cursor-pointer object-cover h-[300px]"
               />
             </Link>
             <div className="p-4">
