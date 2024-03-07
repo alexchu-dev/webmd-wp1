@@ -13,6 +13,7 @@ import DiscountsSection from "./components/Discounts"
 import Testimonials from "./components/Testimonials"
 import ReviewComponent from "./components/Review"
 import LatestJournal from "./components/Journal"
+import ToolsProgramme from "./components/ToolsProgramme"
 
 export default function Home() {
   return (
@@ -35,6 +36,9 @@ export default function Home() {
       <ReviewComponent />
 
       <LatestJournal />
+
+      <ToolsProgramme />
+      
     </main>
   )
 }
