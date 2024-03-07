@@ -1,8 +1,9 @@
 "use client"
-import React, { useState } from "react"
-import { Menu, MenuItem } from "@mui/material"
+import React, { useState, useEffect } from "react"
+import { usePathname } from 'next/navigation'
 import Link from "next/link"
 import Image from "next/image"
+import { Menu, MenuItem } from "@mui/material"
 // import { useAtom } from "jotai"
 // import { atomWithStorage } from "jotai/utils"
 // import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs"
@@ -13,9 +14,10 @@ export default function Nav() {
   /* Hamburger Button state */
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleClick = () => {
+  const toggleNav = () => {
     setIsOpen(!isOpen)
   }
+
   /* Handler for Drop Down Menu */
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
@@ -27,6 +29,14 @@ export default function Nav() {
   const handleMenuClose = () => {
     setAnchorEl(null)
   }
+
+  /* Handle route change */
+  const pathname = usePathname(); 
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   /* Dark Mode */
   // const [darkMode, setDarkMode] = useAtom(darkModeAtom)
 
@@ -49,7 +59,7 @@ export default function Nav() {
             />
           </Link>
           <button
-            onClick={handleClick}
+            onClick={toggleNav}
             className="flex flex-col absolute top-0 right-0 mt-4 mr-4 justify-center items-center z-10"
             style={{ outline: "none" }}
           >
@@ -77,7 +87,7 @@ export default function Nav() {
         >
           {/* "x" button to close the menu */}
           <button
-            onClick={handleClick}
+            onClick={toggleNav}
             className="absolute top-0 right-0 mt-4 mr-4"
           >
             <svg
@@ -123,8 +133,42 @@ export default function Nav() {
               <li className="mb-4">
                 <Link href="/tips">Tips</Link>
               </li>
+              <li className="mb-4 relative group">
+                <button onClick={handleMenuOpen}>About</button>
+
+                <Menu
+                  id="about-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleMenuClose}
+                  MenuListProps={{
+                    "aria-labelledby": "about-menu-button",
+                    onMouseLeave: handleMenuClose,
+                  }}
+                  sx={{
+                    "& .MuiPaper-root": {
+                      backgroundColor: "skyblue",
+                      color: "white",
+                    },
+                  }}
+                >
+                  <MenuItem onClick={handleMenuClose}>
+                    <Link href="/about/">About Us</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleMenuClose}>
+                    <Link href="/about/refund">Refund Policy</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleMenuClose}>
+                    <Link href="/about/privacy">Privacy Policy</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleMenuClose}>
+                    <Link href="/about/careers">Careers</Link>
+                  </MenuItem>
+                </Menu>
+              </li>
+
               <li className="mb-4">
-                <Link href="/about">About</Link>
+                <Link href="/contacts">Contacts</Link>
               </li>
             </ul>
           </nav>
@@ -174,15 +218,18 @@ export default function Nav() {
                 <Link href="/about/">About Us</Link>
               </MenuItem>
               <MenuItem onClick={handleMenuClose}>
-                <Link href="/about/refund-Policy">Refund Policy</Link>
+                <Link href="/about/refund">Refund Policy</Link>
               </MenuItem>
               <MenuItem onClick={handleMenuClose}>
-                <Link href="/about/refund-Policy">Privacy Policy</Link>
+                <Link href="/about/privacy">Privacy Policy</Link>
               </MenuItem>
               <MenuItem onClick={handleMenuClose}>
                 <Link href="/about/careers">Careers</Link>
               </MenuItem>
             </Menu>
+          </li>
+          <li className="ml-4">
+            <Link href="/contacts">Contacts</Link>
           </li>
           <li className="ml-4">
             <Link href="/signin">Sign in</Link>
