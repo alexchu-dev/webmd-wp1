@@ -115,7 +115,7 @@ export const destinations = [
     "/destinations/paris/pexels-pixabay-2344.jpg",
     "/destinations/paris/pexels-pixabay-2363.jpg",
     "/destinations/paris/pexels-pixabay-460740.jpg",
-    "/destinations/paris/street-2820547_1920.jpg.jpg",
+    "/destinations/paris/street-2820547_1920.jpg",
     "/destinations/paris/tony-lee-8IKf54pc3qk-unsplash.jpg",
   ],
     text1: "",
