@@ -22,7 +22,6 @@ export const metadata = {
   description:
     "The best travel agency in Portsmouth and beyond, providing best options for your next trip since 2024. © Alex Chu 2024",
 }
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

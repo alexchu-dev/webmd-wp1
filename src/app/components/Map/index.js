@@ -11,7 +11,7 @@ export default function Map({ address }) {
   const geocoder = useMemo(() => new google.maps.Geocoder(), [])
   useEffect(() => {
     const loader = new Loader({
-      apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+      apiKey: process.env.GOOGLE_MAPS_API_KEY,
       version: "weekly",
     })
     loader.load().then(() => {
