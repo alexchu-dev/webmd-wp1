@@ -1,5 +1,9 @@
+/*
+Author: Alex Chu up2244885
+University of Portsmouth
+Footer component with Sitemap and Contact form.
+*/
 "use client"
-
 import React from "react"
 import Link from "next/link"
 

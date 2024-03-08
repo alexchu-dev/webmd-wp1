@@ -33,7 +33,7 @@ export default function DestinationPage() {
   const handleClose = () => setOpen(false)
 
   if (!destination) {
-    return <div>Loading...</div>
+    return  <main className="max-w-screen-xl mx-auto p-20">Loading...</main>
   }
 
   const style = {
@@ -66,23 +66,37 @@ export default function DestinationPage() {
           </h1>
         </div>
       </div>
-      <p>{destination.text1}</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {destination.images.map((image, index) => (
-          <div className="gallery-card relative  overflow-hidden">
-            <Image
-              key={index}
-              src={image}
-              alt={`${destination.name} ${index + 1}`}
-              title={`${destination.name} ${index + 1}`}
-              width={640}
-              height={400}
-              className="rounded-xl mb-4 cursor-pointer object-cover h-[400px]"
-              onClick={() => handleOpen(image)}
-            />
-          </div>
-        ))}
-      </div>
+      <section className="mb-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {destination.images.map((image, index) => (
+            <>
+              {index === 1 && (
+                <>
+                  <div className="gallery-card relative overflow-hidden content-center justify-center items-center flex">
+                    <p className="mb-2 p-4 leading-loose">
+                      <sub className="text-3xl leading-3">“</sub>
+                      {destination.text1}
+                      <sub className="text-3xl leading-3">”</sub>
+                    </p>
+                  </div>
+                </>
+              )}
+              <div className="gallery-card relative overflow-hidden content-center justify-center items-center flex">
+                <Image
+                  key={index}
+                  src={image}
+                  alt={`${destination.name} ${index + 1}`}
+                  title={`${destination.name} ${index + 1}`}
+                  width={640}
+                  height={400}
+                  className="rounded-xl mb-4 cursor-pointer object-cover h-[400px]"
+                  onClick={() => handleOpen(image)}
+                />
+              </div>
+            </>
+          ))}
+        </div>
+      </section>
 
       <Modal
         open={open}

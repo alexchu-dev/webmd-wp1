@@ -1,7 +1,7 @@
 /*
 Author: Alex Chu up2244885
 University of Portsmouth
-This component shows the destination of the week on the home page.
+Destination of the week section to show on the home page.
 It gets the data from the data.js. This would be much better to get the data from an API, and the data should be pulled from a database.
 */
 "use client"

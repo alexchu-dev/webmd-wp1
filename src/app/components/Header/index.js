@@ -1,3 +1,8 @@
+/*
+Author: Alex Chu up2244885
+University of Portsmouth
+Header component
+*/
 import Nav from "../Navbar"
 
 export default function Header(props) {

@@ -1,9 +1,26 @@
 import React from "react"
 import Link from "next/link"
 import Image from "next/image.js"
-import { destinations } from "./data.js"
+import { destinations } from "./data.js";
+// import { destinations as originalDestinations } from "./data.js";
+
+// /* Randomize array */
+// const shuffleArray = (array) => {
+//   let currentIndex = array.length, randomIndex;
+
+//   while (currentIndex !== 0) {
+//     randomIndex = Math.floor(Math.random() * currentIndex);
+//     currentIndex--;
+//     [array[currentIndex], array[randomIndex]] = [
+//       array[randomIndex], array[currentIndex]];
+//   }
+
+//   return array;
+// }
 
 export default function Destinations() {
+  // const destinations = React.useMemo(() => shuffleArray([...originalDestinations]), []);
+
   return (
     <main className="max-w-screen-xl mx-auto p-4">
       <h1 className="text-3xl font-semibold mb-6">Destinations</h1>
@@ -17,9 +34,9 @@ export default function Destinations() {
                 title={name}
                 width={640}
                 height={400}
-                className="h-[400px] rounded-xl"
+                className="h-[400px] rounded-xl object-cover"
               />
-              <span className="absolute bottom-0 left-0 bg-black bg-opacity-50 text-white p-4">
+              <span className="absolute bottom-0 left-0 bg-black rounded-bl-xl rounded-tr-xl font-bold bg-opacity-50 text-white p-4">
                 {name}
               </span>
             </Link>

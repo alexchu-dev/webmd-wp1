@@ -5,25 +5,27 @@ This component is a carousel component that uses the keen-slider library to crea
 The images are imported from the data.js file and the attributes are also imported from the data.js file.
 */
 "use client"
-import React from "react"
+import React, { useState } from "react"
 import Link from "next/link.js"
+import Image from "next/image.js"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { sliderData } from "./data.js"
-import { Button } from "@mui/material"
+import "./styles.css"
 
 export default function Carousel(props) {
-  const [opacities, setOpacities] = React.useState([])
-
-  const [sliderRef] = useKeenSlider(
+  const [currentSlide, setCurrentSlide] = React.useState(0)
+  const [loaded, setLoaded] = useState(false)
+  const [sliderRef, instanceRef] = useKeenSlider(
     {
+      initial: 0,
       slides: sliderData.length,
       loop: true,
-      detailsChanged(s) {
-        const new_opacities = s.track.details.slides.map(
-          (slide) => slide.portion
-        )
-        setOpacities(new_opacities)
+      slideChanged(s) {
+        setCurrentSlide(s.track.details.rel)
+      },
+      created() {
+        setLoaded(true)
       },
     },
     [
@@ -57,69 +59,82 @@ export default function Carousel(props) {
       },
     ]
   )
-
+  function Arrow(props) {
+    const disabled = props.disabled ? " arrow--disabled" : ""
+    return (
+      <svg
+        onClick={props.onClick}
+        className={`arrow ${
+          props.left ? "arrow--left" : "arrow--right"
+        } ${disabled}`}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        {props.left && (
+          <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
+        )}
+        {!props.left && (
+          <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+        )}
+      </svg>
+    )
+  }
   return (
     <section id="carousel" className="relative mb-4">
-      <div ref={sliderRef} className={`fader ${props.className}`}>
-        {sliderData.map((data, idx) => (
-          <div
-            key={idx}
-            className="fader__slide"
-            style={{ opacity: opacities[idx] }}
-          >
-            <img src={data.image} alt={data.desc}/>
-            <div className="overlay-content">
-              <div className="overlay-text">
-                <h2 className="text-5xl font-bold mb-4 drop-shadow-md text-center">
-                  {data.title}
-                </h2>
-                <p className="text-2xl drop-shadow-md">{data.desc}</p>
-              </div>
-              {/* <Link href={data.link} target="_blank" rel="noopener noreferrer">
-              <Button variant="outlined">Details</Button>
-            </Link> */}
+      <div className="navigation-wrapper">
+        <div ref={sliderRef} className={`keen-slider ${props.className}`}>
+          {sliderData.map((data, idx) => (
+            <div
+              key={idx}
+              className={`keen-slider__slide number-slide${
+                idx + 1
+              } fader__slide`}
+            >
+              <Link href={data.link} target="_blank" rel="noopener noreferrer">
+                <Image
+                  src={data.image}
+                  alt={data.desc}
+                  width={1280}
+                  height={450}
+                  style={{ objectFit: "cover", height: "450px" }}
+                />
+                <div className="overlay-content">
+                  <div className="overlay-text">
+                    <h2 className="text-5xl font-bold mb-4 drop-shadow-md text-center">
+                      {data.title}
+                    </h2>
+                    <p className="text-2xl drop-shadow-md">{data.desc}</p>
+                  </div>
+                </div>
+              </Link>
             </div>
-          </div>
-        ))}
-        <style jsx>{`
-          .fader {
-            height: 450px;
-            position: relative;
-            overflow: hidden;
-          }
+          ))}
+        </div>
+        {loaded && instanceRef.current && (
+          <>
+            <Arrow
+              left
+              onClick={(e) =>
+                e.stopPropagation() || instanceRef.current?.prev()
+              }
+              disabled={currentSlide === 0}
+            />
 
-          .fader__slide {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            font-weight: 500;
-          }
-
-          .fader__slide img {
-            display: block;
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-            object-position: 50% 60%;
-          }
-          .overlay-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-          }
-          .overlay-text {
-            color: #fff;
-            padding: 20px;
-            background: rgba(100, 100, 100, 0.5);
-          }
-        `}</style>
+            <Arrow
+              onClick={(e) =>
+                e.stopPropagation() || instanceRef.current?.next()
+              }
+              disabled={
+                currentSlide ===
+                instanceRef.current.track.details.slides.length - 1
+              }
+            />
+          </>
+        )}
       </div>
+      <style jsx>{`
+        
+      `}</style>
     </section>
   )
 }

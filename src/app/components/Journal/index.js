@@ -1,3 +1,8 @@
+/*
+Author: Alex Chu up2244885
+University of Portsmouth
+Latest Journal section for the home page.
+*/
 "use client"
 import React from 'react';
 import { latestJournals } from './data.js';

@@ -1,3 +1,8 @@
+/*
+Author: Alex Chu up2244885
+University of Portsmouth
+Google Maps component for the contact us page. The API key is stored in the .env file.
+*/
 "use client"
 import { useEffect, useRef, useMemo } from "react"
 import { Loader } from "@googlemaps/js-api-loader"

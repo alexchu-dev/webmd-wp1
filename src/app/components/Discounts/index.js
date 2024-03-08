@@ -1,6 +1,7 @@
 /*
 Author: Alex Chu up2244885
 University of Portsmouth
+Discounts Section
 */
 "use client"
 import React from "react"
