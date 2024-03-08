@@ -2,7 +2,8 @@
 export default function Credits() {
   return (
     <main className="relative max-w-screen-xl m-auto p-4">
-      <h1 className="text-2xl font-bold text-center">Photo Credits</h1>
+      <h1 className="text-3xl font-semibold m-2 text-center">Photo Credits</h1>
+      <div className="border-b-4 border-[#01afd1] w-1/3 mx-auto mb-6" />
       <p>
         All of the photos on this website are researched on Pixabay and Pexel,
         which are royalty free and are free to use without attributions. Thank

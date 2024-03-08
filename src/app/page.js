@@ -14,12 +14,14 @@ import Testimonials from "./components/Testimonials"
 import ReviewComponent from "./components/Review"
 import LatestJournal from "./components/Journal"
 import ToolsProgramme from "./components/ToolsProgramme"
+import { homeSliderData } from "./data-carousel.js"
 
 export default function Home() {
+
   return (
     <main className="relative max-w-screen-xl m-auto p-4">
       {/* Hero Carousel Section using Carousel component, className as props to control style. */}
-      <Carousel className="rounded-xl" />
+      <Carousel data={homeSliderData} className="rounded-xl" />
 
       <PopularDestinationCard />
 

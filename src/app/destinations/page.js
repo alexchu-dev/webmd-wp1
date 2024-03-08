@@ -23,7 +23,8 @@ export default function Destinations() {
 
   return (
     <main className="max-w-screen-xl mx-auto p-4">
-      <h1 className="text-3xl font-semibold mb-6">Destinations</h1>
+      <h1 className="text-3xl font-semibold m-2 text-center">Destinations</h1>
+      <div className="border-b-4 border-[#01afd1] w-1/3 mx-auto mb-6" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {destinations.map(({ name, banner, slug }) => (
           <div key={slug} className="group">

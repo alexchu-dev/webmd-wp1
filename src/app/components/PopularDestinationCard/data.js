@@ -5,7 +5,7 @@ export const popularDestinations = [
     title: "Maldives",
     alt: "Scuba diving in Maldives",
     desc: "Immerse in the beauty of crystal clear waters and colourful marine life.",
-    image: "/destinations/maldives/pexels-oleksandr-p-1540108.jpg",
+    image: "/img/maldives/pexels-oleksandr-p-1540108.jpg",
     link: "/destinations/maldives",
   },
   {
@@ -13,7 +13,7 @@ export const popularDestinations = [
     title: "Tokyo, Japan",
     alt: "Shibuya Crossing in Tokyo",
     desc: "Senpai! Let's investigate the vibrant culture and technology of the bustling city life.",
-    image: "/destinations/tokyo/jezael-melgoza-layMbSJ3YOE-unsplash.jpg",
+    image: "/img/tokyo/jezael-melgoza-layMbSJ3YOE-unsplash.jpg",
     link: "/destinations/tokyo",
   },
   {
@@ -21,7 +21,7 @@ export const popularDestinations = [
     title: "Paris, France",
     alt: "Lourve Museum in Paris",
     desc: "Embrace the romance and art in the City of Love.",
-    image: "/destinations/paris/pexels-pixabay-2363.jpg",
+    image: "/img/paris/pexels-pixabay-2363.jpg",
     link: "/destinations/paris",
   },
 ]

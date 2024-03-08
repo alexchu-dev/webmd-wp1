@@ -33,7 +33,7 @@ export default function PopularPackages() {
             <div className="p-6">
               <h3 className="text-2xl font-semibold mb-2">{pkg.title}</h3>
               <p className="mb-4">{pkg.desc}</p>
-              <p className="font-bold">{pkg.price}</p>
+              <p className="font-bold">£{pkg.price}</p>
               <Link
                 href={pkg.link}
                 className="mt-4 font-semibold color3 hover:text-blue-700"

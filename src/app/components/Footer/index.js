@@ -6,11 +6,17 @@ Footer component with Sitemap and Contact form.
 "use client"
 import React from "react"
 import Link from "next/link"
+import Swal from 'sweetalert2'
 
 export default function Footer() {
   const handleSubmit = (e) => {
     e.preventDefault()
-    alert("Form not submitted. This will be implemented in wp2")
+    Swal.fire({
+      title: 'Notice',
+      text: 'Form not submitted. This will be implemented in wp2',
+      icon: 'info',
+      confirmButtonText: 'Cool'
+    })
   }
 
   return (
@@ -34,7 +40,7 @@ export default function Footer() {
                   <Link href="/journal">Journal</Link>
                 </li>
                 <li>
-                  <Link href="/journal">Travel Tips</Link>
+                  <Link href="/tips">Travel Tips</Link>
                 </li>
                 <li>
                   <Link href="/trip-builder">Trip Builder</Link>
@@ -43,7 +49,7 @@ export default function Footer() {
                   <Link href="/signin">Sign In/ Sign Up</Link>
                 </li>
                 <li>
-                  <Link href="/login">My Cart</Link>
+                  <Link href="/signin">My Cart</Link>
                 </li>
               </ul>
             </div>
@@ -59,13 +65,13 @@ export default function Footer() {
                   <Link href="/referral">Referral</Link>
                 </li>
                 <li>
-                  <Link href="/careers">Careers</Link>
+                  <Link href="/about/careers">Careers</Link>
                 </li>
                 <li>
-                  <Link href="/refund">Refund Policy</Link>
+                  <Link href="/about/refund">Refund Policy</Link>
                 </li>
                 <li>
-                  <Link href="/privacy">Privacy Policy</Link>
+                  <Link href="/about/privacy">Privacy Policy</Link>
                 </li>
                 <li>
                   <Link href="/contacts">Contacts</Link>

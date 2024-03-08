@@ -35,8 +35,8 @@ export default function SpecialDeals() {
                 {deal.title}
               </h3>
               <p className="md:mb-2">{deal.desc}</p>
-              <p className="line-through">{deal.originalPrice}</p>
-              <p className="font-bold text-red-600">{deal.discountedPrice}</p>
+              <p className="line-through">£{deal.price}</p>
+              <p className="font-bold text-red-600">£{deal.discountedPrice}</p>
               <Link
                 href={deal.link}
                 className="md:mt-4 font-semibold color3 hover:text-blue-700"

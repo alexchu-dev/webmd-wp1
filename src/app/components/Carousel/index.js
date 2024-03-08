@@ -10,10 +10,10 @@ import Link from "next/link.js"
 import Image from "next/image.js"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
-import { sliderData } from "./data.js"
 import "./styles.css"
 
 export default function Carousel(props) {
+  const sliderData = props.data
   const [currentSlide, setCurrentSlide] = React.useState(0)
   const [loaded, setLoaded] = useState(false)
   const [sliderRef, instanceRef] = useKeenSlider(
@@ -90,23 +90,37 @@ export default function Carousel(props) {
                 idx + 1
               } fader__slide`}
             >
-              <Link href={data.link} target="_blank" rel="noopener noreferrer">
+              {!props.gallery && data?.link ? (
+                <Link
+                  href={data?.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={data?.image}
+                    alt={data?.desc}
+                    width={1280}
+                    height={450}
+                    style={{ objectFit: "cover", height: "450px" }}
+                  />
+                  <div className="overlay-content">
+                    <div className="overlay-text">
+                      <h2 className="text-5xl font-black mb-4 drop-shadow-md text-center">
+                        {data?.title}
+                      </h2>
+                      <p className="text-2xl drop-shadow-md">{data?.desc}</p>
+                    </div>
+                  </div>
+                </Link>
+              ) : (
                 <Image
-                  src={data.image}
-                  alt={data.desc}
+                  src={data?.image}
+                  alt={data?.desc}
                   width={1280}
                   height={450}
                   style={{ objectFit: "cover", height: "450px" }}
                 />
-                <div className="overlay-content">
-                  <div className="overlay-text">
-                    <h2 className="text-5xl font-bold mb-4 drop-shadow-md text-center">
-                      {data.title}
-                    </h2>
-                    <p className="text-2xl drop-shadow-md">{data.desc}</p>
-                  </div>
-                </div>
-              </Link>
+              )}
             </div>
           ))}
         </div>
@@ -132,9 +146,7 @@ export default function Carousel(props) {
           </>
         )}
       </div>
-      <style jsx>{`
-        
-      `}</style>
+      <style jsx>{``}</style>
     </section>
   )
 }

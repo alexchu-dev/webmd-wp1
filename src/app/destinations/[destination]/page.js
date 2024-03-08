@@ -58,7 +58,7 @@ export default function DestinationPage() {
           alt={destination.name}
           width={1280}
           height={200}
-          className="w-full h-[200px] object-cover rounded-xl"
+          className="w-full h-[120px] md:h-[200px] object-cover"
         />
         <div className="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-30 flex items-center justify-center rounded-xl">
           <h1 className="text-5xl font-semibold text-white">

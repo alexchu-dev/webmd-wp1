@@ -15,7 +15,7 @@ export default function DiscountsSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
         <div className="bg-slate-200 col-span-1 rounded-xl h-[500px] text-center justify-center items-center content-center flex flex-col relative">
           <Image
-            src="/destinations/okinawa/_DSC9420.jpg"
+            src="/img/okinawa/_DSC9420.jpg"
             alt="Okinawa Aquarium"
             title="Okinawa Aquarium"
             fill
@@ -49,12 +49,12 @@ export default function DiscountsSection() {
                 <h3 className="text-2xl font-semibold mb-2">{data.title}</h3>
                 <p>
                   <span className="line-through mr-2">
-                    £{data.originalPrice}
+                    £{data.price}
                   </span>
                   {data.discount * 100}% off
                 </p>
                 <p className="font-bold text-red-600">
-                  £{(data.originalPrice * (1 - data.discount)).toFixed(0)}
+                  £{(data.price * (1 - data.discount)).toFixed(0)}
                 </p>
                 <Link href={data.link} className="mt-4 font-semibold color3 hover:text-blue-700">
                     Learn More
