@@ -1,4 +1,11 @@
 import Image from 'next/image'
+
+export const metadata = {
+  title: "Referral Programme | Ports Travel - Best Travel Agency in Portsmouth and Beyond",
+  description:
+    "Ports Travel offers referral programme so that you can earn rewards when you refer your friends and family. © Alex Chu 2024",
+}
+
 export default function Referral() {
   return (
     <main className="max-w-screen-xl mx-auto p-4">
@@ -11,7 +18,7 @@ export default function Referral() {
           width={800}
           height={600}
           className="object-cover md:max-h-[600px] mx-auto" />
-        Come back soon! Site under construction.
+       Ports Travel offers referral programme so that you can earn rewards when you refer your friends and family
       </div>
     </main>
   )

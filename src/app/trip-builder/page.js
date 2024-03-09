@@ -1,4 +1,10 @@
 import Image from 'next/image'
+
+export const metadata = {
+  title: "Trip Builder | Ports Travel - Best Travel Agency in Portsmouth and Beyond",
+  description: "Build your own itinerary © Alex Chu 2024",
+}
+
 export default function TripBuilder() {
   return (
     <main className="max-w-screen-xl mx-auto p-4">

@@ -1,4 +1,11 @@
 import Image from 'next/image'
+
+export const metadata = {
+  title: "Rewards Programme | Ports Travel - Best Travel Agency in Portsmouth and Beyond",
+  description:
+    "For every mile you travel, you earn your mileage and you can redeem your rewards. © Alex Chu 2024",
+}
+
 export default function Rewards() {
   return (
     <main className="max-w-screen-xl mx-auto p-4">
@@ -11,7 +18,7 @@ export default function Rewards() {
           width={800}
           height={600}
           className="object-cover md:max-h-[600px] mx-auto" />
-        Come back soon! Site under construction.
+        For every mile you travel, you earn your mileage and you can redeem your rewards.
       </div>
     </main>
   )

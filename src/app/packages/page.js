@@ -5,6 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { packages } from "./data";
 
+export const metadata = {
+  title: "Packages | Ports Travel - Best Travel Agency in Portsmouth and Beyond",
+  description:
+    "The best travel agency in Portsmouth and beyond, providing best options for your next trip since 2024. © Alex Chu 2024",
+}
+
 export default function PackagesPage() {
   return (
     <main className="max-w-screen-xl mx-auto p-4">

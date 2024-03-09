@@ -18,7 +18,7 @@ const zen = Zen_Kaku_Gothic_New({
 const arvo = Arvo({ weight: ["400", "700"], subsets: ["latin"] })
 
 export const metadata = {
-  title: "Ports Travel | Best Travel Agency in Portsmouth and Beyond",
+  title: "Ports Travel - Best Travel Agency in Portsmouth and Beyond",
   description:
     "The best travel agency in Portsmouth and beyond, providing best options for your next trip since 2024. © Alex Chu 2024",
 }

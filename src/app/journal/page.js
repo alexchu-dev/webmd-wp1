@@ -1,4 +1,11 @@
 import Image from 'next/image'
+
+export const metadata = {
+  title: "Journal | Ports Travel - Best Travel Agency in Portsmouth and Beyond",
+  description:
+    "The best travel agency in Portsmouth and beyond, providing best options for your next trip since 2024. © Alex Chu 2024",
+}
+
 export default function Journal() {
   return (
     <main className="max-w-screen-xl mx-auto p-4">
