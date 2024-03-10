@@ -25,7 +25,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${zen.className}`}>
+      <body className={`${zen.className} min-h-screen`}>
         <AppRouterCacheProvider>
           <Providers>
             <ThemeProvider theme={theme}>

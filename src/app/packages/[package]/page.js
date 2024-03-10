@@ -6,10 +6,8 @@ A Calendar component is created separately to be used and call back states are u
 */
 "use client"
 import React, { useState } from "react"
-import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { packages } from "../data.js"
-import { Modal, Box, Typography } from "@mui/material"
 import Carousel from "@/app/components/Carousel/index.js"
 import Calendar from "@/app/components/Calendar/index.js"
 import Swal from "sweetalert2"
@@ -22,12 +20,6 @@ export default function PackagePage() {
   const pathname = usePathname()
   const packageId = pathname.split("/").pop()
   const packageData = fetchPackageData(packageId)
-
-  if (!packageData) {
-    return (
-      <main className="max-w-screen-xl mx-auto p-20">Package Not Found.</main>
-    )
-  }
   /* Date range selection for callback states*/
   const [selectedDates, setSelectedDates] = useState({
     startDate: null,
@@ -37,6 +29,13 @@ export default function PackagePage() {
   const handleDateSelect = (startDate, endDate) => {
     setSelectedDates({ startDate, endDate })
   }
+
+  if (!packageData) {
+    return (
+      <main className="max-w-screen-xl mx-auto p-20">Package Not Found.</main>
+    )
+  }
+  
 
   /* This function is for the onClick event and supposed to pass data to API.
    Since there is no API and database set in wp1, I will just use console log. */

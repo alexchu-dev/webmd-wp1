@@ -45,7 +45,7 @@ export default function Testimonials() {
           >
             {index === current && (
               <div className="testimonial-content">
-                <p className="feedback px-4">"{testimonial.feedback}"</p>
+                <p className="feedback px-4">&ldquo;{testimonial.feedback}&rdquo;</p>
 
                 <div className="h-[120px] items-center justify-center">
                   <Image

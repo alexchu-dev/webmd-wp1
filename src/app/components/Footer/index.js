@@ -20,7 +20,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="flex flex-col items-center justify-center mx-auto bg-[#01afd1] text-white">
+    <footer className="flex flex-col items-center justify-center mx-auto bg-[#01afd1] text-white h-auto">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 w-full max-w-screen-lg mx-auto text-left justify-start">
         <div className="footer-links col-span-2">
           <h2 className="text-xl font-bold mb-2">Sitemap</h2>

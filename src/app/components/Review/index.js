@@ -12,7 +12,7 @@ const Review = ({ author, rating, comment }) => (
       {[...Array(5)].map((_, index) => index < rating ? <Star key={index} /> : <EmptyStar key={index} />)}
     </div>
     
-    <p className="comment">"{comment}"</p>
+    <p className="comment">&ldquo;{comment}&rdquo;</p>
   </div>
 );
 
