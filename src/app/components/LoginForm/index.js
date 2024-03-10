@@ -8,32 +8,45 @@ export default function LoginForm() {
 
   async function handleSubmit(event) {
     event.preventDefault()
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    })
-
-    const data = await res.json()
-    if (res.ok) {
-      console.log("Login Success:", data.message)
+    try {
+       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
+  
+      const data = await res.json()
+      if (res.ok) {
+        console.log("Login Success:", data.message)
+        Swal.fire({
+          title: "Login Successful",
+          text: data.message,
+          icon: "success",
+          confirmButtonText: "OK",
+        })
+      } else {
+        console.error("Login Failed:", data.message)
+        Swal.fire({
+          title: "Invalid Credentials",
+          text: data.message,
+          icon: "error",
+          confirmButtonText: "Try Again",
+        })
+      }
+    } catch (error) {
+      console.error("Login Failed:", error)
       Swal.fire({
-        title: "Login Successful",
-        text: data.message,
-        icon: "success",
+        title: "Login Failed",
+        text: "API not available yet. Will be implemented in phase 2.",
+        icon: "warning",
         confirmButtonText: "OK",
       })
-    } else {
-      console.error("Login Failed:", data.message)
-      Swal.fire({
-        title: "Invalid Credentials",
-        text: data.message,
-        icon: "error",
-        confirmButtonText: "Try Again",
-      })
     }
+    
+    
+    
   }
 
   return (
