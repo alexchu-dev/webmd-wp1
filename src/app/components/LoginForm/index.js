@@ -1,29 +1,51 @@
 "use client"
 import React, { useState } from "react"
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2"
 
-export default function SignInForm() {
+export default function LoginForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
     event.preventDefault()
-    Swal.fire({
-        title: 'Notice',
-        text: 'Form not submitted. This will be implemented in wp2',
-        icon: 'info',
-        confirmButtonText: 'Cool'
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+
+    const data = await res.json()
+    if (res.ok) {
+      console.log("Login Success:", data.message)
+      Swal.fire({
+        title: "Login Successful",
+        text: data.message,
+        icon: "success",
+        confirmButtonText: "OK",
       })
-    console.log(`Email: ${email}, Password: ${password}`)
+    } else {
+      console.error("Login Failed:", data.message)
+      Swal.fire({
+        title: "Invalid Credentials",
+        text: data.message,
+        icon: "error",
+        confirmButtonText: "Try Again",
+      })
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="p-8 m-4 bg-white rounded-2xl shadow-xl w-full sm:max-w-[400px]">
-      <h2 className="text-center text-2xl font-semibold mb-4">Sign In</h2>
+    <form
+      onSubmit={handleSubmit}
+      className="p-8 m-4 bg-white rounded-2xl shadow-xl w-full sm:max-w-[400px]"
+    >
+      <h2 className="text-center text-2xl font-semibold mb-4">Login</h2>
 
       <div className="mb-4">
         <label htmlFor="email" className="block text-sm mb-2">
-          Email
+          Email (demo@demo.com)
         </label>
         <input
           type="email"
@@ -38,7 +60,7 @@ export default function SignInForm() {
 
       <div className="mb-6">
         <label htmlFor="password" className="block text-sm mb-2">
-          Password
+          Password (demo)
         </label>
         <input
           type="password"
@@ -56,7 +78,7 @@ export default function SignInForm() {
           type="submit"
           className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
         >
-          Sign In
+          Login
         </button>
       </div>
     </form>

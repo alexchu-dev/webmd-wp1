@@ -232,7 +232,7 @@ export default function Nav() {
             <Link href="/contacts">Contacts</Link>
           </li>
           <li className="ml-4">
-            <Link href="/signin">Sign in</Link>
+            <Link href="/login">Login</Link>
           </li>
           {/* <li>
             {darkMode ? (
