@@ -43,11 +43,12 @@ export default function Destination({slug}) {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: "2/3",
+    minWidth: "400px",
     maxWidth: "90%",
     bgcolor: "background.paper",
     borderRadius: 2,
     boxShadow: 24,
-    p: 4,
+    p: 2,
     outline: "none",
   }
 
