@@ -26,11 +26,11 @@ export default function LatestJournal() {
     <section id="latest-journal" className="border rounded-xl p-4 mb-4">
       <h2 className="text-xl font-bold mb-2">LATEST JOURNAL</h2>
       <div className="journal-entries grid grid-cols-1 md:grid-cols-3 gap-4">
-        {latestJournals.map(({ id, title, date, excerpt }) => (
+        {latestJournals.map(({ id, slug, title, date, excerpt }) => (
           <div key={id} className="journal-entry rounded-lg overflow-hidden shadow-lg p-4">
             <h3 className="text-lg font-semibold">{title}</h3>
             <p className="text-sm text-gray-500" dangerouslySetInnerHTML={{ __html: formatDate(date) }}></p>
-            <p className="excerpt">{excerpt}<a href={`/journal/`} className="font-semibold color3 hover:text-blue-700 ml-2">[Read More]</a></p>
+            <p className="excerpt">{excerpt}<a href={`/journal/${slug}`} className="font-semibold color3 hover:text-blue-700 ml-2">[Read More]</a></p>
             {/* <p className="excerpt">{excerpt}<a href={`/journal/${id}`} className="font-semibold color3 hover:text-blue-700 ml-2">[Read More]</a></p> */}
             
           </div>
