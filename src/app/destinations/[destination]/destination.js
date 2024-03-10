@@ -1,8 +1,8 @@
 /*
 Author: Alex Chu up2244885
 University of Portsmouth
-This is the package page (slug) that displays particular package details.
-A Calendar component is created separately to be used and call back states are used to store the selected dates.
+This is the destination page that displays particular destination details.
+All the client side components are controlled here.
 */
 "use client"
 import React, { useState, useEffect } from "react"
