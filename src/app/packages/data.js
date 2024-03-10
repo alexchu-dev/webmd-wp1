@@ -62,4 +62,67 @@ export const packages = [
     price: 2000,
     availableDates: ["2023-04-20", "2023-05-25", "2023-06-15"],
   },
+  {
+    id: "okinawa-adventure",
+    title: "Adventure in Okinawa",
+    destination: "Okinawa",
+    images: [
+      {image: "/img/okinawa/sea-5450863_1920.jpg", desc: "A natural mushroom-shaped rock in Okinawa"},
+      {image: "/img/okinawa/green-turtle-7133765_1920.jpg", desc: "Sea Turtle in reef"},
+      {image: "/img/okinawa/_DSC9420.jpg", desc: "Okinawa Churaumi Aquarium"},
+    ],
+    description:
+      "Dive into the crystal-clear waters of Okinawa and explore the rich coral reefs. Experience thrilling water sports and discover the unique Ryukyu culture in this tropical paradise.",
+    itinerary: [
+      "Day 1: Arrival and check-in",
+      "Day 2: Naha city tour, Shuri Castle",
+      "Day 3: Snorkelling and water sports",
+      "Day 4: Okinawa Churaumi Aquarium and Ryukyu culture",
+      "Day 5: Departure"
+    ],
+    price: 1250,
+    availableDates: ["2023-04-12", "2023-05-14", "2023-06-29"],
+  },
+  {
+    id: "taipei-foodie",
+    title: "Taipei Foodie City Tour",
+    destination: "Taipei",
+    images: [
+      {image: "/img/taipei/cityscape-5543223_1920.jpg", desc: "Night landscape of Taipei"},
+      {image: "/img/taipei/night-market-1714683_1920.jpg", desc: "Taipei street food"},
+      {image: "/img/taipei/woman-4959896_1920.jpg", desc: "Traditional culture" },
+    ],
+    description:
+      "Embark on a culinary journey through Taipei. Savor the flavors of night markets, traditional tea houses, and Michelin-starred street food that promise an unforgettable taste adventure.",
+    itinerary: [
+      "Day 1: Arrival and check-in",
+      "Day 2: Taipei city tour, night market",
+      "Day 3: Tea house and street food tour",
+      "Day 4: Free day/ Shopping",
+      "Day 5: Departure"
+    ],
+    price: 950,
+    availableDates: ["2023-04-12", "2023-05-14", "2023-06-29"],
+  },
+  {
+    id: "hokkaido-winter",
+    title: "Hokkaido Winter Wonderland",
+    destination: "Hokkaido",
+    images: [
+      {image: "/img/hokkaido/alexchu-snowcovered-sapporo.jpg", desc: "A snow-covered landscape in Sapporo"},
+      {image: "/img/hokkaido/alexchu-otaru-fishmarket.jpg", desc: "Otaru Fish Market"},
+      {image: "/img/hokkaido/alexchu-furano2.jpg", desc: "Furano Farm"}
+    ],
+    description:
+      "Experience the magic of Hokkaido's winter landscape. From the Sapporo Snow Festival to world-class skiing and soothing onsen, this snowy escape offers the perfect chilly adventure.",
+    itinerary: [
+      "Day 1: Arrival and check-in",
+      "Day 2: Sapporo city tour, Snow Festival",
+      "Day 3: Skiing and onsen",
+      "Day 4: Otaru day trip",
+      "Day 5: Departure"
+    ],
+    price: 1800,
+    availableDates: ["2023-04-12", "2023-05-14", "2023-06-29"],
+  },
 ]
