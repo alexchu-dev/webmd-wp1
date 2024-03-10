@@ -13,20 +13,18 @@ export default function Refund() {
           At Ports Travel, we strive to ensure that all our customers have a
           satisfying and enjoyable travel experience. We understand that
           sometimes plans change, and you may need to cancel or amend your
-          travel arrangements. This policy outlines our refund and cancellation
-          terms in accordance with UK legal practices.
+          travel arrangements. This policy is a demo for academic purposes and
+          does not hold any legal value.
         </p>
         <p>
           <strong>Cancellation by You</strong>
         </p>
-        <ul>
+        <ul className="list-inside list-decimal">
           <li>
-            <p>
-              If you wish to cancel your travel booking, you must notify us as
-              soon as possible. The following cancellation charges will apply
-              from the date we receive your notification:
-            </p>
-            <ul>
+            If you wish to cancel your travel booking, you must notify us as
+            soon as possible. The following cancellation charges will apply from
+            the date we receive your notification:
+            <ul className="list-inside list-disc">
               <li>
                 More than 30 days before departure: 20% of the total booking
                 cost
@@ -38,71 +36,63 @@ export default function Refund() {
             </ul>
           </li>
           <li>
-            <p>
-              For cancellations made within 14 days of booking and where
-              departure is more than 30 days away, a full refund will be
-              provided, in line with the Consumer Contracts Regulations.
-            </p>
+            For cancellations made within 14 days of booking and where departure
+            is more than 30 days away, a full refund will be provided, in line
+            with the Consumer Contracts Regulations.
           </li>
         </ul>
         <p>
           <strong>Amendments by You</strong>
         </p>
         <p>
-          If you need to make changes to your travel arrangements after booking,
-          we will do our best to accommodate your needs. Please note that
-          amendments may incur additional charges, depending on the nature of
-          the changes and the conditions of our service providers.
+          Urna et pharetra pharetra massa massa. Libero volutpat sed cras
+          ornare. Hac habitasse platea dictumst quisque sagittis purus. Maecenas
+          ultricies mi eget mauris pharetra et ultrices.
         </p>
         <p>
           <strong>Cancellation by Us</strong>
         </p>
         <p>
-          In the unlikely event that we must cancel your travel arrangements,
-          you will have the option to:
+          Est ultricies integer quis auctor elit sed. Et malesuada fames ac
+          turpis egestas integer eget aliquet. Suspendisse potenti nullam ac
+          tortor vitae purus faucibus ornare suspendisse.
         </p>
-        <ul>
-          <li>
-            Accept an alternative travel arrangement of equivalent or higher
-            value (if available)
-          </li>
-          <li>
-            Accept an alternative travel arrangement of lower value (if
-            available) with a refund of the difference
-          </li>
-          <li>Receive a full refund of all monies paid</li>
+        <ul className="list-inside list-disc">
+          <li>Quisque sagittis purus sit amet.</li>
+          <li>Arcu vitae elementum curabitur vitae nunc.</li>
+          <li>Placerat duis ultricies lacus sed turpis tincidunt. </li>
         </ul>
         <p>
           <strong>Force Majeure</strong>
         </p>
         <p>
-          We will not provide a refund in cases where the performance or prompt
-          performance of our contractual obligations is prevented by reasons of
-          force majeure. Such circumstances include, but are not limited to,
-          war, threat of war, riot, civil strife, industrial dispute, terrorist
-          activity, natural or nuclear disaster, fire, adverse weather
-          conditions, pandemics, and all similar events beyond our control.
+          Lacus vel facilisis volutpat est velit egestas dui id. Eu nisl nunc mi
+          ipsum faucibus vitae aliquet nec ullamcorper. Sit amet volutpat
+          consequat mauris nunc congue nisi.
         </p>
         <p>
           <strong>Travel Insurance</strong>
         </p>
         <p>
-          We strongly recommend that all travelers purchase comprehensive travel
-          insurance to cover unforeseen circumstances that may lead to the
-          cancellation of travel plans. Refunds for cancellations covered by
-          travel insurance should be claimed from the respective insurance
-          provider.
+          Consequat mauris nunc congue nisi vitae. Sed nisi lacus sed viverra
+          tellus in hac habitasse. Ultricies lacus sed turpis tincidunt id
+          aliquet risus feugiat. Eget nullam non nisi est sit amet. Leo vel
+          fringilla est ullamcorper eget nulla facilisi.
         </p>
         <p>
           <strong>Contact Us</strong>
         </p>
         <p>
           For any inquiries regarding cancellations, refunds, or amendments to
-          your travel arrangements, please contact us
-          at&nbsp;info@portstravel.co.uk.
+          your travel arrangements, please contact us at <strong>info@portstravel.co.uk</strong> (Unfortunately you will not be
+          able to contact us as this email does not actually exist).
         </p>
       </article>
-      <style jsx>{`p {margin-bottom: 5px;}`}</style>
+      <style jsx>{`
+        p {
+          margin-bottom: 5px;
+        }
+      `}</style>
     </main>
   )
 }

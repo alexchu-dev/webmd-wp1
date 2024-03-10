@@ -30,7 +30,8 @@ export default function LatestJournal() {
           <div key={id} className="journal-entry rounded-lg overflow-hidden shadow-lg p-4">
             <h3 className="text-lg font-semibold">{title}</h3>
             <p className="text-sm text-gray-500" dangerouslySetInnerHTML={{ __html: formatDate(date) }}></p>
-            <p className="excerpt">{excerpt}<a href={`/journal/${id}`} className="font-semibold color3 hover:text-blue-700 ml-2">[Read More]</a></p>
+            <p className="excerpt">{excerpt}<a href={`/journal/`} className="font-semibold color3 hover:text-blue-700 ml-2">[Read More]</a></p>
+            {/* <p className="excerpt">{excerpt}<a href={`/journal/${id}`} className="font-semibold color3 hover:text-blue-700 ml-2">[Read More]</a></p> */}
             
           </div>
         ))}
