@@ -5,6 +5,6 @@ export const metadata = {
   description: "Travel Tips for you to get prepared for your trips © Alex Chu 2024",
 };
 
-export default function Page() {
+export default function TipsPage() {
   return <Tips />;
 }

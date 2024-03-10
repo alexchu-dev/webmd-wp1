@@ -5,8 +5,7 @@ This is the package page (slug) that displays particular package details.
 A Calendar component is created separately to be used and call back states are used to store the selected dates.
 */
 "use client"
-import React, { useState } from "react"
-import { usePathname } from "next/navigation"
+import React, { useState, useEffect } from "react"
 import { packages } from "../data.js"
 import Carousel from "@/app/components/Carousel/index.js"
 import Calendar from "@/app/components/Calendar/index.js"
@@ -16,15 +15,17 @@ const fetchPackageData = (packageId) => {
   return packages.find((p) => p.id === packageId)
 }
 
-export default function PackagePage() {
-  const pathname = usePathname()
-  const packageId = pathname.split("/").pop()
-  const packageData = fetchPackageData(packageId)
-  /* Date range selection for callback states*/
+export default function Package({ packageId }) {
+  const [packageData, setPackageData] = useState(null)
   const [selectedDates, setSelectedDates] = useState({
     startDate: null,
     endDate: null,
   })
+
+  useEffect(() => {
+    const data = fetchPackageData(packageId)
+    setPackageData(data)
+  }, [packageId])
 
   const handleDateSelect = (startDate, endDate) => {
     setSelectedDates({ startDate, endDate })
@@ -35,7 +36,6 @@ export default function PackagePage() {
       <main className="max-w-screen-xl mx-auto p-20">Package Not Found.</main>
     )
   }
-  
 
   /* This function is for the onClick event and supposed to pass data to API.
    Since there is no API and database set in wp1, I will just use console log. */

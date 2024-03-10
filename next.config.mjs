@@ -6,6 +6,8 @@ import { config as dotenvConfig } from 'dotenv';
 const { parsed: myEnv } = dotenvConfig();
 
 const nextConfig = {
+  output: "export",
+  images: { unoptimized: true },
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(myEnv));
     return config;
