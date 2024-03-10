@@ -17,4 +17,12 @@ export async function POST(req) {
     });
   }
 }
+export async function GET() {
+    return new Response(JSON.stringify({ message: "Test OK!" }), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+}
 export const dynamic = "force-static"
