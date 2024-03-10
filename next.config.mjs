@@ -7,7 +7,7 @@ const { parsed: myEnv } = dotenvConfig();
 
 const nextConfig = {
   output: "export",
-  basePath: '/wp1',
+  // basePath: '/wp1',
   images: { unoptimized: true },
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(myEnv));
