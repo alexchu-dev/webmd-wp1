@@ -48,7 +48,7 @@ export default function Destination({slug}) {
     bgcolor: "background.paper",
     borderRadius: 2,
     boxShadow: 24,
-    p: 4,
+    p: 2,
     outline: "none",
   }
 
