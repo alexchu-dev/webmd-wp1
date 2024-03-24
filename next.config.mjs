@@ -6,7 +6,7 @@ import { config as dotenvConfig } from "dotenv"
 const { parsed: myEnv } = dotenvConfig()
 
 const nextConfig = {
-  output: "export",
+  // output: "export",
   // basePath: '/wp1',
   images: { unoptimized: true },
   async headers() {
