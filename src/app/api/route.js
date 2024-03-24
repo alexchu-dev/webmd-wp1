@@ -18,7 +18,7 @@ export async function POST(req) {
   }
 }
 export async function GET() {
-    return new Response(JSON.stringify({ message: "Test OK!" }), {
+    return new Response(JSON.stringify({ Message: "Welcome to the API of my coursework." }), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
