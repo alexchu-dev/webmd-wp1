@@ -14,7 +14,7 @@ export function middleware(request) {
     //     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
     // )
     // return res
-    // return NextResponse.json({ message: 'Auth required' }, { status: 401 })
+    return NextResponse.json({ message: 'Auth required' }, { status: 401 })
 }
 
 export const config = {
