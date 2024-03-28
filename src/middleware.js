@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
-export function middleware() {
+export function middleware(request) {
+    console.log("Middleware ", request.url)
     // // retrieve the current response
     // const res = NextResponse.next()
 
@@ -12,10 +13,10 @@ export function middleware() {
     //     'Access-Control-Allow-Headers',
     //     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
     // )
-
     // return res
+    // return NextResponse.json({ message: 'Auth required' }, { status: 401 })
 }
 
 export const config = {
-    // matcher: '/api/:path*',
+    matcher: '/api/:path*',
 }
