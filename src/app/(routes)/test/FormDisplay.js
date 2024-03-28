@@ -23,9 +23,8 @@ export default function FormDisplay() {
                 className="relative p-4 m-4 bg-white rounded-2xl shadow-xl"
               >
                 <HandleDelete id={person._id} onDeleteSuccess={refetch} />
-                <h1>{person.name}</h1>
-                <p>{person.age}</p>
-                <p>{person._id}</p>
+                <h1>Name: {person.name}</h1>
+                <p>Age: {person.age}</p>
               </div>
             ))}
         </div>
