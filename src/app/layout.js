@@ -10,6 +10,8 @@ import "./globals.css"
 import Header from "./components/Header"
 import Providers from "./providers.js"
 import Footer from "./components/Footer"
+import { Suspense } from "react"
+import Loading from "./loading"
 
 const zen = Zen_Kaku_Gothic_New({
   weight: ["400", "700", "900"],
@@ -30,7 +32,9 @@ export default function RootLayout({ children }) {
           <Providers>
             <ThemeProvider theme={theme}>
               <Header font={arvo.className} />
+              <Suspense fallback={<Loading/>}>
               {children}
+              </Suspense>
               <Footer />
             </ThemeProvider>
           </Providers>

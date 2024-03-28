@@ -11,15 +11,20 @@ import { destinations } from "../data.js"
 import { Modal, Box } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 import IconButton from "@mui/material/IconButton"
+import {usePathname, useSearchParams} from "next/navigation"
+import Loading from "./loading.js"
 
 /* Since NextJS 13 the getStaticProps and getStaticPaths are no longer working, therefore I am using another method in here, before creating an API for fetching. */
 const fetchDestinationData = (slug) => {
   return destinations.find((destination) => destination.slug === slug)
 }
 export default function Destination({slug}) {
+  
   const [destination, setDestination] = useState(null)
   const [open, setOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState("")
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
   useEffect(() => {
     const data = fetchDestinationData(slug)
     console.log(data)
@@ -34,7 +39,7 @@ export default function Destination({slug}) {
   const handleClose = () => setOpen(false)
 
   if (!destination) {
-    return  <main className="max-w-screen-xl mx-auto p-20">Loading...</main>
+    return  <Loading />
   }
 
   const style = {
@@ -51,9 +56,10 @@ export default function Destination({slug}) {
     p: 2,
     outline: "none",
   }
-
+  
   return (
     <main className="max-w-screen-xl mx-auto p-4">
+      {/* <p>This page is {pathname} {searchParams}</p> */}
       <div className="relative mb-4">
         <Image
           src={destination.banner}
