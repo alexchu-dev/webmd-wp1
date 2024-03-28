@@ -11,10 +11,6 @@ const useFetchData = () => {
 
             if (res.ok) {
                 setData(resData);
-                toast.success('Data fetched successfully!', {
-                    position: 'top-center',
-                    duration: 1500,
-                });
             } else {
                 toast.error('Data not found!', {
                     position: 'top-center',
@@ -36,3 +32,5 @@ const useFetchData = () => {
 
     return [data, fetchData];
 };
+
+export default useFetchData;

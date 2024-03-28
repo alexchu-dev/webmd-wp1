@@ -30,7 +30,12 @@ export async function GET() {
   await dbConnect()
   try {
     const res = await User.find({})
-    return new Response(JSON.stringify(res))
+    return new Response(JSON.stringify(res), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
   } catch (error) {
     return new Response(JSON.stringify({ message: error.message }), {
       status: 400,
@@ -49,10 +54,9 @@ export async function DELETE(request) {
   try {
     if (_id) {
       const res = await User.deleteOne({ _id: _id })
-      return new Response(JSON.stringify(res),{status: 200})
-    }
-    else {
-      throw new Error("Error Deletion Record!")  
+      return new Response(JSON.stringify(res), { status: 200 })
+    } else {
+      throw new Error("Error Deletion Record!")
     }
   } catch (error) {
     return new Response(JSON.stringify({ message: error.message }), {
