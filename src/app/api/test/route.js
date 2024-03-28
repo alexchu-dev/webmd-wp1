@@ -25,3 +25,18 @@ export async function POST( request ) {
     })
   }
 }
+
+export async function GET() {
+    await dbConnect()
+    try {
+      const res = await User.find({})
+      return new Response(JSON.stringify(res));
+    } catch (error) {
+        return new Response(JSON.stringify({ message: error.message }), {
+            status: 400,
+            headers: {
+            'Content-Type': 'application/json',
+            },
+        });
+        }
+}
