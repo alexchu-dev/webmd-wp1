@@ -11,6 +11,7 @@ import Image from "next/image.js"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import "./styles.css"
+import Loading from "@/app/loading"
 
 export default function Carousel(props) {
   const sliderData = props.data
@@ -19,7 +20,7 @@ export default function Carousel(props) {
   const [sliderRef, instanceRef] = useKeenSlider(
     {
       initial: 0,
-      slides: sliderData.length,
+      slides: sliderData?.length,
       loop: true,
       slideChanged(s) {
         setCurrentSlide(s.track.details.rel)
@@ -79,6 +80,8 @@ export default function Carousel(props) {
       </svg>
     )
   }
+  if (!sliderData || sliderData.length === 0) return <Loading />
+
   return (
     <section id="carousel" className="relative mb-4">
       <div className="navigation-wrapper">
