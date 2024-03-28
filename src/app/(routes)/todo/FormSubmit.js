@@ -1,24 +1,22 @@
 import React from "react"
 import toast from "react-hot-toast"
 
-const FormSubmit = ({ name, age, setName, setAge, onFormSubmitSuccess }) => {
+const FormSubmit = ({
+  title,
+  task,
+  setTitle,
+  setTask,
+  onFormSubmitSuccess,
+}) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const ageValue = parseInt(age)
-    if (isNaN(ageValue)) {
-      toast.error("Age must be a number!", {
-        position: "top-center",
-        duration: 1500,
-      })
-      return
-    }
-    const response = await fetch("/api/test", {
+    const response = await fetch("/api/todo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, age }),
+      body: JSON.stringify({ title, task }),
     })
 
     if (response.ok) {
@@ -35,6 +33,8 @@ const FormSubmit = ({ name, age, setName, setAge, onFormSubmitSuccess }) => {
         duration: 1500,
       })
     }
+    setTitle('')
+    setTask('')
   }
 
   return (
@@ -42,28 +42,34 @@ const FormSubmit = ({ name, age, setName, setAge, onFormSubmitSuccess }) => {
       onSubmit={handleSubmit}
       className="p-8 m-auto bg-white rounded-2xl shadow-xl w-full sm:max-w-[400px]"
     >
-      <label htmlFor="name">Enter Name </label>
+      <h2 className="font-bold text-2xl text-center">To Do List</h2>
+      <label htmlFor="name">Enter Title</label>
       <input
         required
         type="text"
-        name="name"
-        id="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        name="title"
+        id="title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
         className="w-full px-3 py-2 border rounded"
       />
-      <label htmlFor="age">Enter Age </label>
+      <label htmlFor="age">Enter Task</label>
       <input
         type="text"
-        name="age"
-        id="age"
-        value={age}
-        onChange={(e) => setAge(e.target.value)}
+        name="task"
+        id="task"
+        value={task}
+        onChange={(e) => setTask(e.target.value)}
         className="w-full px-3 py-2 border rounded"
       />
-      <button type="submit" className="w-full px-3 py-2 border rounded">
-        Submit
-      </button>
+      <div className="text-center">
+        <button
+          type="submit"
+          className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+        >
+          Submit
+        </button>
+      </div>
     </form>
   )
 }

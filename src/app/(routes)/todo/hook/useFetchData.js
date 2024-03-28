@@ -6,9 +6,9 @@ const useFetchData = () => {
 
     const fetchData = useCallback(async () => {
         try {
-            const res = await fetch('/api/test', { method: 'GET' });
+            const res = await fetch('/api/todo', { method: 'GET' });
             const resData = await res.json();
-
+            
             if (res.ok) {
                 setData(resData);
             } else {
