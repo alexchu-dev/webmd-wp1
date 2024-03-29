@@ -1,5 +1,5 @@
 import React from "react"
-import LoginForm from "../../_components/LoginForm"
+import SignupForm from "@/app/_components/SignupForm"
 
 export const metadata = {
   title: "Sign Up | Ports Travel - Best Travel Agency in Portsmouth and Beyond",
@@ -9,7 +9,7 @@ export const metadata = {
 export default function SignUpPage() {
   return (
     <main className="flex justify-center items-center h-screen bg-gray-100">
-      <LoginForm />
+      <SignupForm />
     </main>
   )
 }

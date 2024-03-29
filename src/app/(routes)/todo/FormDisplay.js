@@ -5,6 +5,7 @@ import FormSubmit from "./FormSubmit"
 import EditModal from "./EditModal"
 import { Edit as EditIcon } from "@mui/icons-material"
 import useFetchData from "./hook/useFetchData"
+import Loading from "@/app/loading"
 
 export default function FormDisplay() {
   const [title, setTitle] = useState("")
@@ -16,7 +17,9 @@ export default function FormDisplay() {
     setCurrentToDo(todo)
     setEditModalOpen(true)
   }
-
+  if (!data) {
+    return <Loading />
+  }
   return (
     <div className="m-auto justify-center items-center">
       <div className="m-auto justify-center items-center">
@@ -34,7 +37,7 @@ export default function FormDisplay() {
             data.map((todo, index) => (
               <div
                 key={index}
-                className="relative p-4 m-4 bg-white rounded-2xl shadow-xl justify-between items-center flex flex-col"
+                className="relative p-8 m-4 bg-white rounded-2xl shadow-xl justify-between items-center flex flex-col"
               >
                 <HandleDelete id={todo._id} onDeleteSuccess={refetch} />
                 <button

@@ -11,7 +11,7 @@ const FormSubmit = ({
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const response = await fetch("/api/todo", {
+    const res = await fetch("/api/todo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,9 +19,9 @@ const FormSubmit = ({
       body: JSON.stringify({ title, task }),
     })
 
-    if (response.ok) {
-      const res = await response.json()
-      console.log(res)
+    if (res.ok) {
+      const log = await res.json()
+      console.log(log)
       toast.success("Submission Successful!", {
         position: "top-center",
         duration: 1500,

@@ -6,9 +6,24 @@ const JournalSchema = new mongoose.Schema({
     required: [true, "Please provide a title for this journal."],
     maxlength: [60, "Title cannot be more than 60 characters"],
   },
+  slug: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  date: { type: Date, default: Date.now },
+  excerpt: {
+    type: String,
+    required: [true, "Please provide an excerpt for this journal."],
+  },
   content: {
     type: String,
     required: [true, "Please provide content for this journal."],
+  },
+  image: {
+    type: String,
+    required: [true, "Please provide the url of the image."],
   },
 })
 

@@ -9,7 +9,7 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    borderRadius: 2,
     boxShadow: 24,
     p: 4,
 };
@@ -28,7 +28,7 @@ const EditModal = ({ open, handleClose, todo, onEditSuccess }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`/api/todo`, {
+        const res = await fetch(`/api/todo`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ const EditModal = ({ open, handleClose, todo, onEditSuccess }) => {
             body: JSON.stringify({ _id, title, task}),
         });
 
-        if (response.ok) {
+        if (res.ok) {
             toast.success('Update Successful!', {
                 position: 'top-center',
                 duration: 1500,
