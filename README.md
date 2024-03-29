@@ -15,9 +15,8 @@ pnpm dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Staging environment deployed Vercel
-Demo site: [https://up2244885.students.portsmouthuni.ac.uk/]
-
-Backup demo site: [https://webmd-wp1.vercel.app/]
+Main Demo site: [https://webmd-wp1.vercel.app/]
+Internal Demo site (VPN required): [https://up2244885.students.portsmouthuni.ac.uk/]
 
 ![image](https://github.com/alexchu-dev/webmd-wp1/assets/61229735/38b6fe9a-c289-4be1-a7bd-181a89751d06)
 
