@@ -12,7 +12,7 @@ const HandleDelete = ({ id, onDeleteSuccess }) => {
       confirmButtonText: "Yes",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/todo`, {
+        const res = await fetch("/api/todo", {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
