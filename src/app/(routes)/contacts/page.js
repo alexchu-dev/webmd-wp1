@@ -1,40 +1,8 @@
-"use client"
-
-import React, { useEffect, useRef } from "react"
-import { Loader } from "@googlemaps/js-api-loader"
+import React from "react"
 import ContactForm from "@/app/_components/ContactForm"
 import Map from "@/app/_components/Map"
 
 export default function Contacts() {
-  const googleMapRef = useRef(null)
-  useEffect(() => {
-    const loader = new Loader({
-      apiKey: process.env.GOOGLE_MAPS_API_KEY,
-      version: "weekly",
-    })
-
-    async function initMap() {
-      const { Map } = await loader.importLibrary("maps")
-      const { AdvancedMarkerElement } = await loader.importLibrary("marker")
-      const beachFlagImg = document.createElement("img")
-      const logo = "/android-icon-48x48.png"
-      beachFlagImg.src = logo
-      const map = new Map(document.getElementById("map"), {
-        center: { lat: 50.7955, lng: -1.0936 },
-        zoom: 16,
-        mapId: "1eb95b6624c06404",
-      })
-      const marker = new AdvancedMarkerElement({
-        map,
-        position: { lat: 50.7955, lng: -1.0936 },
-        title: "Ports Travel",
-        content: beachFlagImg,
-      })
-    }
-
-    initMap()
-  }, [])
-
   return (
     <main className="max-w-screen-xl mx-auto p-4">
       <h1 className="text-3xl font-semibold m-2 text-center">Contacts</h1>
@@ -58,15 +26,13 @@ export default function Contacts() {
         </div>
       </div>
       <div className="grid md:grid-cols-2 gap-10">
-        <ContactForm />
-        <Map />
+        <div className="contact-form">
+          <h2 className="text-xl font-bold mb-2">Contact Us</h2>
+          <ContactForm />
+        </div>
         <div>
           <h2 className="text-xl font-bold mb-2">Our Location</h2>
-          <div
-            id="map"
-            ref={googleMapRef}
-            style={{ width: "100%", height: "400px" }}
-          ></div>
+          <Map />
         </div>
       </div>
     </main>

@@ -9,7 +9,6 @@ import Link from "next/link"
 import ContactForm from "../ContactForm"
 
 export default function Footer() {
-  
   return (
     <footer className="flex flex-col items-center justify-center mx-auto bg-[#01afd1] text-white h-auto">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 w-full max-w-screen-lg mx-auto text-left justify-start">
@@ -71,7 +70,10 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <ContactForm />
+        <div>
+          <h2 className="text-xl font-bold mb-2">Contact Us</h2>
+          <ContactForm />
+        </div>
       </div>
 
       <div className="copyright inline-block">
