@@ -32,7 +32,7 @@ Travel Vibe Blue Palette
   :root {
     /* --foreground-rgb: 106, 199, 255; 
     */
-    --foreground-rgb: 4,50,99;
+    --foreground-rgb: 4, 50, 99;
     --background-start-rgb: 255, 255, 255;
     --background-end-rgb: 255, 255, 255;
   }
@@ -55,17 +55,38 @@ body {
 }
 /* In case if I need to use these colours, these classes will be referenced. */
 .color1 {
-  color:var(--color1)
+  color: var(--color1);
 }
 .color2 {
-  color:var(--color2)
+  color: var(--color2);
 }
 .color3 {
-  color:var(--color3)
+  color: var(--color3);
 }
 .color4 {
-  color:var(--color4)
+  color: var(--color4);
 }
-.color5{
-  color:var(--color5)
+.color5 {
+  color: var(--color5);
+}
+
+input,
+textarea {
+  color: #000;
+  width: 100%;
+}
+li {
+  padding: 0.2rem 0;
+}
+
+.text-box {
+  padding: 1.5rem;
+  min-height: 130px;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  background-color: #f7fafc;
+}
+.text-title {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
