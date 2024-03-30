@@ -10,38 +10,31 @@ const FormSubmit = ({
 }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/todo`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ title, task }),
-      })
 
-      if (res.ok) {
-        const log = await res.json()
-        console.log(log)
-        toast.success("Submission Successful!", {
-          position: "top-center",
-          duration: 1500,
-        })
-        onFormSubmitSuccess()
-      } else {
-        toast.error("Submission Failed!", {
-          position: "top-center",
-          duration: 1500,
-        })
-      }
-    } catch (error) {
-      console.error("Submission Failed:", error)
-      toast.error("Internal Error, please contact us.", {
+    const res = await fetch("/api/todo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title, task }),
+    })
+
+    if (res.ok) {
+      const log = await res.json()
+      console.log(log)
+      toast.success("Submission Successful!", {
+        position: "top-center",
+        duration: 1500,
+      })
+      onFormSubmitSuccess()
+    } else {
+      toast.error("Submission Failed!", {
         position: "top-center",
         duration: 1500,
       })
     }
-    setTitle("")
-    setTask("")
+    setTitle('')
+    setTask('')
   }
 
   return (
@@ -62,7 +55,6 @@ const FormSubmit = ({
       />
       <label htmlFor="age">Enter Task</label>
       <input
-        required
         type="text"
         name="task"
         id="task"

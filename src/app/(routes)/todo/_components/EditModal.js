@@ -28,7 +28,7 @@ const EditModal = ({ open, handleClose, todo, onEditSuccess }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/todo`, {
+        const res = await fetch(`/api/todo`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
