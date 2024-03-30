@@ -1,5 +1,5 @@
-import dbConnect from "@/app/lib/mongoose"
-import ToDo from "@/app/_models/ToDo"
+import dbConnect from "@/lib/mongoose"
+import ToDo from "@/db/ToDo"
 
 export async function POST(request) {
   await dbConnect()
