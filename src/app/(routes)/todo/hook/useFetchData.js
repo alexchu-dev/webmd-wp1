@@ -6,7 +6,7 @@ const useFetchData = () => {
 
     const fetchData = useCallback(async () => {
         try {
-            const res = await fetch('/api/todo', { method: 'GET' });
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/todo`, { method: 'GET' });
             const resData = await res.json();
             
             if (res.ok) {

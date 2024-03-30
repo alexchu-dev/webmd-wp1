@@ -1,12 +1,15 @@
 "use client"
 import React, { useState } from "react"
 import Swal from "sweetalert2"
+import { useRouter } from 'next/navigation'
 
 export default function SignupForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
+    confirmPassword: "",
   })
 
   const handleChange = (e) => {
@@ -15,7 +18,13 @@ export default function SignupForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const res = await fetch("/api/auth/signup", {
+
+    // Password match checks
+    if (formData.password !== formData.confirmPassword) {
+      return Swal.fire("Error", "Passwords do not match!", "error")
+    }
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +35,11 @@ export default function SignupForm() {
     const data = await res.json()
 
     if (res.ok) {
-      Swal.fire("Success", "Account created successfully!", "success")
+      Swal.fire("Success", "Account created successfully!", "success").then((result) => {
+        if (result.isConfirmed) {
+          router.push('/login');
+        }
+      });
     } else {
       Swal.fire(
         "Error",
@@ -80,6 +93,20 @@ export default function SignupForm() {
           name="password"
           required
           value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border rounded"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="confirmPassword" className="block text-sm mb-2">
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          required
+          value={formData.confirmPassword}
           onChange={handleChange}
           className="w-full px-3 py-2 border rounded"
         />
