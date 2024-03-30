@@ -1,6 +1,6 @@
 import React from "react"
-import ContactForm from "@/app/_components/ContactForm"
-import Map from "@/app/_components/Map"
+import ContactForm from "@/components/ContactForm"
+import Map from "@/components/Map"
 
 export default function Contacts() {
   return (

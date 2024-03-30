@@ -1,4 +1,4 @@
-import dbConnect from "@/lib/mongoose"
+import dbConnect from "@/db/mongoose"
 import ToDo from "@/db/ToDo"
 
 export async function POST(request) {

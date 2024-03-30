@@ -7,8 +7,8 @@ A Calendar component is created separately to be used and call back states are u
 "use client"
 import React, { useState, useEffect } from "react"
 import { packages } from "../data.js"
-import Carousel from "@/app/_components/Carousel/index.js"
-import Calendar from "@/app/_components/Calendar/index.js"
+import Carousel from "@/components/Carousel/index.js"
+import Calendar from "@/components/Calendar/index.js"
 import Swal from "sweetalert2"
 
 const fetchPackageData = (packageId) => {

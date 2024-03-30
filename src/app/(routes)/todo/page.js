@@ -1,6 +1,6 @@
 import React from "react"
 import { Toaster } from 'react-hot-toast';
-import FormDisplay from "./FormDisplay"
+import FormDisplay from "./_components/FormDisplay"
 
 export default function About() {
   return (

@@ -4,7 +4,7 @@ import HandleDelete from "./HandleDelete"
 import FormSubmit from "./FormSubmit"
 import EditModal from "./EditModal"
 import { Edit as EditIcon } from "@mui/icons-material"
-import useFetchData from "./hook/useFetchData"
+import useFetchData from "../hook/useFetchData"
 import Loading from "@/app/loading"
 
 export default function FormDisplay() {

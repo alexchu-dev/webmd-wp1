@@ -1,5 +1,5 @@
 import React from "react"
-import SignupForm from "@/app/_components/SignupForm"
+import SignupForm from "@/components/SignupForm"
 
 export const metadata = {
   title: "Sign Up | Ports Travel - Best Travel Agency in Portsmouth and Beyond",
