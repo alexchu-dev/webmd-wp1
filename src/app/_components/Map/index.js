@@ -7,7 +7,7 @@ Google Maps component for the contact us page. The API key is stored in the .env
 import { useEffect, useRef, useMemo } from "react"
 import { Loader } from "@googlemaps/js-api-loader"
 export default function Map({ address }) {
-  const apiKey = process.env.GOOGLE_MAPS_API_KEY
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
   const googleMapRef = useRef(null)
   useEffect(() => {
     const loader = new Loader({
