@@ -70,11 +70,16 @@ body {
   color: var(--color5);
 }
 
+p {
+  margin-bottom: 0.5rem;
+}
+
 input,
 textarea {
   color: #000;
   width: 100%;
 }
+
 li {
   padding: 0.2rem 0;
 }
@@ -89,4 +94,8 @@ li {
 .text-title {
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.photo-credits a {
+  text-decoration: underline;
 }

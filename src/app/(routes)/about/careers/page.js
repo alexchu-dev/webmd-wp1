@@ -1,4 +1,3 @@
-import Image from 'next/image'
 export default function Careers() {
   return (
     <main className="max-w-screen-xl mx-auto p-4">

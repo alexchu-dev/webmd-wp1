@@ -1,7 +1,6 @@
-"use client"
 export default function Credits() {
   return (
-    <main className="relative max-w-screen-xl m-auto p-4">
+    <main className="relative max-w-screen-xl m-auto p-4 photo-credits">
       <h1 className="text-3xl font-semibold m-2 text-center">Photo Credits</h1>
       <div className="border-b-4 border-[#01afd1] w-1/3 mx-auto mb-6" />
       <p>
@@ -18,13 +17,13 @@ export default function Credits() {
         <strong>Maldives</strong>
       </h3>
       <p>
-        Photo by Asad Photo Maldives:
+        Photo by Asad Photo Maldives:{" "}
         <a href="https://www.pexels.com/photo/aerial-photography-of-resort-beside-ocean-1483054/">
           https://www.pexels.com/photo/aerial-photography-of-resort-beside-ocean-1483054/
         </a>
       </p>
       <p>
-        Photo by Asad Photo Maldives:
+        Photo by Asad Photo Maldives:{" "}
         <a href="https://www.pexels.com/photo/man-and-woman-walks-on-dock-1268855/">
           https://www.pexels.com/photo/man-and-woman-walks-on-dock-1268855/
         </a>
@@ -36,31 +35,31 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/romaneau-834195/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=666122">
           romaneau
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=666122">
           Pixabay
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/12019-12019/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1993704">
           12019
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1993704">
           Pixabay
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/fonthipward-119618/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=262511">
           Fonthip Ward
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=262511">
           Pixabay
         </a>
@@ -68,172 +67,172 @@ export default function Credits() {
       <p>
         Activities:
         <br />
-        Photo by Asad Photo Maldives:
+        Photo by Asad Photo Maldives:{" "}
         <a href="https://www.pexels.com/photo/two-people-riding-a-jet-ski-1430676/">
           https://www.pexels.com/photo/two-people-riding-a-jet-ski-1430676/
         </a>
       </p>
       <p>
-        Photo by Asad Photo Maldives:
+        Photo by Asad Photo Maldives:{" "}
         <a href="https://www.pexels.com/photo/man-and-woman-lying-on-white-sand-near-sea-shore-1198839/">
           https://www.pexels.com/photo/man-and-woman-lying-on-white-sand-near-sea-shore-1198839/
         </a>
       </p>
       <p>
-        Photo by Asad Photo Maldives:
+        Photo by Asad Photo Maldives:{" "}
         <a href="https://www.pexels.com/photo/people-on-seashore-3155662/">
           https://www.pexels.com/photo/people-on-seashore-3155662/
         </a>
       </p>
       <p>
-        Photo by Asad Photo Maldives:
+        Photo by Asad Photo Maldives:{" "}
         <a href="https://www.pexels.com/photo/group-of-people-swimming-on-beach-3155657/">
           https://www.pexels.com/photo/group-of-people-swimming-on-beach-3155657/
         </a>
       </p>
       <p>
-        Photo by Asad Photo Maldives:
+        Photo by Asad Photo Maldives:{" "}
         <a href="https://www.pexels.com/photo/two-person-riding-kayak-1320684/">
           https://www.pexels.com/photo/two-person-riding-kayak-1320684/
         </a>
       </p>
       <p>
-        Photo by Oleksandr P:
+        Photo by Oleksandr P:{" "}
         <a href="https://www.pexels.com/photo/three-people-diving-on-body-of-water-1540108/">
           https://www.pexels.com/photo/three-people-diving-on-body-of-water-1540108/
         </a>
       </p>
       <h3>Paris</h3>
       <p>
-        Photo by Pixabay:
+        Photo by Pixabay:{" "}
         <a href="https://www.pexels.com/photo/clear-glass-museum-during-golden-hour-2363/">
           https://www.pexels.com/photo/clear-glass-museum-during-golden-hour-2363/
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/matt_86-9082173/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5767708">
           matt_86
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5767708">
           Pixabay
         </a>
       </p>
       <p>
-        Photo by Pixabay:
+        Photo by Pixabay:{" "}
         <a href="https://www.pexels.com/photo/eiffel-tower-paris-460740/">
           https://www.pexels.com/photo/eiffel-tower-paris-460740/
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1850689">
           Pexels
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1850689">
           Pixabay
         </a>
       </p>
       <p>
-        Photo by Pixabay:
+        Photo by Pixabay:{" "}
         <a href="https://www.pexels.com/photo/arc-de-triomphe-paris-2344/">
           https://www.pexels.com/photo/arc-de-triomphe-paris-2344/
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/herryway-29985/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=101633">
           herry wibisono
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=101633">
           Pixabay
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/dnovac-485744/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4011992">
           Dan Novac
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4011992">
           Pixabay
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/pierre9x6-10217214/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4345139">
           Pierre Blach&eacute;
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4345139">
           Pixabay
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/edmondlafoto-7913128/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3234472">
           edmondlafoto
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3234472">
           Pixabay
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/edo870-1130202/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=813238">
           edo870
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=813238">
           Pixabay
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/xat-ch-12531001/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5264147">
           Xavier Turpain
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5264147">
           Pixabay
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/lauratara-6167959/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2820547">
           Laura
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2820547">
           Pixabay
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/pierre9x6-10217214/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4694708">
           Pierre Blach&eacute;
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4694708">
           Pixabay
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/stocksnap-894430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2590901">
           StockSnap
         </a>
-        from
+        from{" "}
         <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2590901">
           Pixabay
         </a>
       </p>
       <p>
-        Photo by
+        Photo by{" "}
         <a href="https://unsplash.com/@tli427?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">
           Tony Lee
         </a>
@@ -243,7 +242,7 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Photo by
+        Photo by{" "}
         <a href="https://unsplash.com/@a_harmuth?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">
           Alex Harmuth
         </a>
@@ -258,7 +257,7 @@ export default function Credits() {
       </p>
       <h3>Tokyo</h3>
       <p>
-        Photo by
+        Photo by{" "}
         <a href="https://unsplash.com/@erikeae?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">
           Erik Eastman
         </a>
@@ -268,7 +267,7 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Photo by
+        Photo by{" "}
         <a href="https://unsplash.com/@jezar?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">
           Jezael Melgoza
         </a>
@@ -278,7 +277,7 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Photo by
+        Photo by{" "}
         <a href="https://unsplash.com/@miyatankun?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">
           Takashi Miyazaki
         </a>
@@ -288,7 +287,7 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Photo by
+        Photo by{" "}
         <a href="https://unsplash.com/@jaison333?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">
           Jaison Lin
         </a>
@@ -298,7 +297,7 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/stocksnap-894430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=923000">
           StockSnap
         </a>
@@ -308,7 +307,7 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/samueles-1246195/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1010971">
           Samuele Schir&ograve;
         </a>
@@ -336,7 +335,7 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/cegoh-94852/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=237658">
           Jason Goh
         </a>
@@ -346,7 +345,7 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/stocksnap-894430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2559608">
           StockSnap
         </a>
@@ -356,7 +355,7 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/inkmagistudio-8705727/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4732803">
           Evelyn Chai
         </a>
@@ -366,7 +365,7 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/leonpendragon-17527139/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=6805531">
           Guru Bhullar
         </a>
@@ -377,7 +376,7 @@ export default function Credits() {
       </p>
       <h3>Okinawa</h3>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/kanenori-4749850/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=7559632">
           Kanenori
         </a>
@@ -387,7 +386,7 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/kanenori-4749850/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=7133765">
           Kanenori
         </a>
@@ -397,7 +396,7 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Image by
+        Image by{" "}
         <a href="https://pixabay.com/users/seimori-studio-8969325/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3420678">
           SEIMORI
         </a>
@@ -407,7 +406,7 @@ export default function Credits() {
         </a>
       </p>
       <p>
-        Photo by
+        Photo by{" "}
         <a href="https://unsplash.com/@lewisyin?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">
           Lewis Yin
         </a>
@@ -666,11 +665,6 @@ export default function Credits() {
           Pixabay
         </a>
       </p>
-      <style jsx>{`
-        a {
-          text-decoration: underline;
-        }
-      `}</style>
     </main>
   )
 }

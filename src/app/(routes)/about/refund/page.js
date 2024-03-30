@@ -1,5 +1,3 @@
-"use client"
-import Image from "next/image"
 export default function Refund() {
   return (
     <main className="max-w-screen-xl mx-auto p-4">
@@ -88,11 +86,6 @@ export default function Refund() {
           able to contact us as this email does not actually exist).
         </p>
       </article>
-      <style jsx>{`
-        p {
-          margin-bottom: 5px;
-        }
-      `}</style>
     </main>
   )
 }
