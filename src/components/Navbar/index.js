@@ -170,6 +170,9 @@ export default function Nav() {
               <li className="mb-4">
                 <Link href="/contacts">Contacts</Link>
               </li>
+              <li className="mb-4">
+                <Link href="/login">Login</Link>
+              </li>
             </ul>
           </nav>
         </div>
