@@ -1,0 +1,12 @@
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "@/auth"
+
+export async function getMySession() {
+  const session = await getServerSession(authOptions)
+
+  if (!session) {
+    return null
+  }
+
+  return session
+}

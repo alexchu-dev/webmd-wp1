@@ -36,7 +36,7 @@ export default function Nav() {
 
   // Next-Auth useSession Hook
   const { data: session, status } = useSession()
-  console.log(session)
+
 
   useEffect(() => {
     setIsOpen(false)
@@ -44,7 +44,6 @@ export default function Nav() {
 
   /* Dark Mode */
   // const [darkMode, setDarkMode] = useAtom(darkModeAtom)
-
   return (
     <>
       {/* <h1 className="">Welcome to {darkMode ? "dark" : darkMode} mode!</h1> */}
@@ -186,7 +185,7 @@ export default function Nav() {
                     }}
                   >
                     Sign Out{" "}
-                    {session.user.image && (
+                    {session.user?.image && (
                       <Image
                         src={session.user.image}
                         alt="User"
@@ -271,8 +270,8 @@ export default function Nav() {
                   signOut({ callbackUrl: process.env.NEXT_PUBLIC_API_URL })
                 }}
               >
-                Sign Out{" "}
-                {session.user.image && (
+                Sign Out{" "} {session?.user?.name}
+                {session.user?.image && (
                   <Image
                     src={session.user.image}
                     alt="User"

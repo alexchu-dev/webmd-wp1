@@ -25,12 +25,12 @@ export const metadata = {
   description:
     "The best travel agency in Portsmouth and beyond, providing best options for your next trip since 2024. © Alex Chu 2024",
 }
-export default function RootLayout({ children, Session }) {
+export default function RootLayout({ children, session }) {
   return (
     <html lang="en">
       <body className={`${zen.className} min-h-screen bg-gray-100 text-black`}>
         <AppRouterCacheProvider>
-          <NextAuthProvider session={Session}>
+          <NextAuthProvider session={session}>
             <Providers>
               <ThemeProvider theme={theme}>
                 <Header font={arvo.className} />

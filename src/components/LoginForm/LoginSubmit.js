@@ -7,7 +7,6 @@ const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
   // useSession hook with next-auth
   const { data: session, status } = useSession()
   const callbackUrl = process.env.NEXT_PUBLIC_API_URL + "/dashboard"
-  console.log(callbackUrl)
   const renderAuthButtons = () => {
     if (session) {
       return (
@@ -58,16 +57,17 @@ const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
               />
             </div>
 
-            <div className="flex text-center gap-4">
+            <div className="text-center mb-2">
               <button
                 type="submit"
-                className="basis-1/2 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded"
+                className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded min-w-40"
               >
                 Login
-              </button>
+              </button></div>
+              <div className="text-center mb-2">
               <Link
                 href="/auth/signup"
-                className="basis-1/2 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded"
+                className="px-4 py-2 underline text-base"
               >
                 Sign Up
               </Link>
@@ -115,30 +115,19 @@ const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        }
-      )
-      const data = await res.json()
+      const res = await signIn("credentials", { email, password, redirect: false,  callbackUrl: callbackUrl})
+      console.log(res)
       if (res.ok) {
-        console.log("Login Success:", data.message)
+        console.log("Login Success")
         Swal.fire({
           title: "Login Successful",
-          text: data.message,
           icon: "success",
           confirmButtonText: "OK",
         })
       } else {
-        console.error("Login Failed:", data.message)
+        console.error("Login Failed")
         Swal.fire({
           title: "Invalid Credentials",
-          text: data.message,
           icon: "error",
           confirmButtonText: "Try Again",
         })
@@ -153,6 +142,7 @@ const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
       })
     }
   }
+  
   return (
     <>
       <div className="m-auto p-8 bg-white rounded-2xl shadow-xl w-full sm:max-w-[400px]">
