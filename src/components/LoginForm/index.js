@@ -7,13 +7,11 @@ export default function LoginForm() {
   const [password, setPassword] = useState("")
 
   return (
-    <div className="m-auto justify-center ">
       <LoginSubmit
         email={email}
         password={password}
         setEmail={setEmail}
         setPassword={setPassword}
       />
-    </div>
   )
 }

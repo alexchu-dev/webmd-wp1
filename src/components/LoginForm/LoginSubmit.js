@@ -49,7 +49,7 @@ const LoginSubmit = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-8 bg-white rounded-2xl shadow-xl w-full sm:max-w-[400px]"
+      className="p-8 m-4 bg-white rounded-2xl shadow-xl w-full sm:max-w-[400px]"
     >
       <h2 className="font-bold text-2xl text-center mb-4">Login</h2>
       <div className="mb-4">
