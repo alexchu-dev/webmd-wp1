@@ -13,7 +13,7 @@ import { popularDestinations } from "./data.js"
 
 export default function PopularDestinations() {
   return (
-    <section id="popular-destinations" className="border  rounded-xl p-4 mb-4">
+    <section id="popular-destinations" className="border  rounded-xl p-4 mb-4 bg-white">
       <h2 className="text-xl font-bold mb-2">
         POPULAR DESTINATIONS
         <span className="text-base font-light md:ml-2 block md:inline">

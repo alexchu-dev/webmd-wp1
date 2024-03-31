@@ -1,9 +1,10 @@
 "use client"
 import React, { useState, useEffect } from "react"
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, MenuItem } from "@mui/material"
+import { signOut, useSession } from "next-auth/react"
 // import { useAtom } from "jotai"
 // import { atomWithStorage } from "jotai/utils"
 // import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs"
@@ -31,11 +32,15 @@ export default function Nav() {
   }
 
   /* Handle route change */
-  const pathname = usePathname(); 
+  const pathname = usePathname()
+
+  // Next-Auth useSession Hook
+  const { data: session, status } = useSession()
+  console.log(session)
 
   useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+    setIsOpen(false)
+  }, [pathname])
 
   /* Dark Mode */
   // const [darkMode, setDarkMode] = useAtom(darkModeAtom)
@@ -171,7 +176,29 @@ export default function Nav() {
                 <Link href="/contacts">Contacts</Link>
               </li>
               <li className="mb-4">
-                <Link href="/login">Login</Link>
+                {session ? (
+                  <Link
+                    className="flex items-center gap-2"
+                    href="/"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      signOut()
+                    }}
+                  >
+                    Sign Out{" "}
+                    {session.user.image && (
+                      <Image
+                        src={session.user.image}
+                        alt="User"
+                        width={30}
+                        height={30}
+                        className="rounded-full"
+                      />
+                    )}
+                  </Link>
+                ) : (
+                  <Link href="/auth/login">Login</Link>
+                )}
               </li>
             </ul>
           </nav>
@@ -235,7 +262,29 @@ export default function Nav() {
             <Link href="/contacts">Contacts</Link>
           </li>
           <li className="ml-4">
-            <Link href="/login">Login</Link>
+            {session ? (
+              <Link
+                className="flex items-center gap-2"
+                href="/"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  signOut()
+                }}
+              >
+                Sign Out{" "}
+                {session.user.image && (
+                  <Image
+                    src={session.user.image}
+                    alt="User"
+                    width={20}
+                    height={20}
+                    className="rounded-full"
+                  />
+                )}
+              </Link>
+            ) : (
+              <Link href="/auth/login">Login</Link>
+            )}
           </li>
           {/* <li>
             {darkMode ? (

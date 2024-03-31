@@ -19,7 +19,7 @@ const Review = ({ author, rating, comment }) => (
 export default function ReviewComponent() {
   return (
     <section id="reviews"
-    className="border rounded-xl p-4 mb-4">
+    className="border rounded-xl p-4 mb-4 bg-white">
       <h2 className="text-xl font-bold mb-2">CUSTOMER REVIEWS</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
       {reviews.map((review) => (

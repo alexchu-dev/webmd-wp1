@@ -23,7 +23,7 @@ const formatDate = (dateString) => {
 
 export default function LatestJournal() {
   return (
-    <section id="latest-journal" className="border rounded-xl p-4 mb-4">
+    <section id="latest-journal" className="border rounded-xl p-4 mb-4 bg-white">
       <h2 className="text-xl font-bold mb-2">LATEST JOURNAL</h2>
       <div className="journal-entries grid grid-cols-1 md:grid-cols-3 gap-4">
         {latestJournals.map(({ id, slug, title, date, excerpt }) => (

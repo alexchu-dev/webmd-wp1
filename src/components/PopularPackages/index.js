@@ -10,13 +10,13 @@ import { popularPackagesData } from "./data.js"
 
 export default function PopularPackages() {
   return (
-    <section id="popular-packages" className="border rounded-xl p-4 mb-4">
+    <section id="popular-packages" className="border rounded-xl p-4 mb-4 bg-white">
       <h2 className="text-xl font-bold mb-2">POPULAR PACKAGES</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {popularPackagesData.map((pkg) => (
           <div
             key={pkg.id}
-            className="package-card rounded-lg overflow-hidden shadow-lg"
+            className="package-card rounded-lg overflow-hidden bg-white shadow-lg"
           >
             <div className="relative w-full h-[300px]">
               <Link href={pkg.link}>

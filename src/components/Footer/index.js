@@ -36,10 +36,10 @@ export default function Footer() {
                   <Link href="/trip-builder">Trip Builder</Link>
                 </li>
                 <li>
-                  <Link href="/login">Login/ Sign Up</Link>
+                  <Link href="/auth/login">Login/ Sign Up</Link>
                 </li>
                 <li>
-                  <Link href="/login">My Cart</Link>
+                  <Link href="/auth/login">My Cart</Link>
                 </li>
               </ul>
             </div>

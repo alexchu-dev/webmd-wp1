@@ -8,7 +8,7 @@ export default function Privacy() {
           <strong>Privacy Policy</strong>
         </p>
         <p>
-          At Ports Travel, accessible from www.portstravel.co.uk, one of our
+          At Ports Travel, accessible from webmd-wp1.vercel.app, one of our
           main priorities is the privacy of our visitors. This Privacy Policy
           document contains types of information that are collected and recorded
           by Ports Travel Agency and how we use it. If you have additional
@@ -77,7 +77,7 @@ export default function Privacy() {
         </p>
         <p>
           For any inquiries regarding cancellations, refunds, or amendments to
-          your travel arrangements, please contact us at <strong>info@portstravel.co.uk</strong> (Unfortunately you will not be
+          your travel arrangements, please contact us at <strong>gmail@gmail.com</strong> (Unfortunately you will not be
           able to contact us as this email does not actually exist).
         </p>
       </article>

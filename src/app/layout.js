@@ -4,6 +4,7 @@ University of Portsmouth
 */
 import { Zen_Kaku_Gothic_New, Arvo } from "next/font/google"
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter"
+import NextAuthProvider from "./NextAuthProvider"
 import { ThemeProvider } from "@mui/material/styles"
 import theme from "../theme"
 import "./globals.css"
@@ -24,22 +25,24 @@ export const metadata = {
   description:
     "The best travel agency in Portsmouth and beyond, providing best options for your next trip since 2024. © Alex Chu 2024",
 }
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, Session }) {
   return (
     <html lang="en">
-      <body className={`${zen.className} min-h-screen bg-gray-100`}>
+      <body className={`${zen.className} min-h-screen bg-gray-100 text-black`}>
         <AppRouterCacheProvider>
-          <Providers>
-            <ThemeProvider theme={theme}>
-              <Header font={arvo.className} />
-              <Suspense fallback={<Loading />}>
-                <main className="relative max-w-screen-xl m-auto p-4">
-                  {children}
-                </main>
-              </Suspense>
-              <Footer />
-            </ThemeProvider>
-          </Providers>
+          <NextAuthProvider session={Session}>
+            <Providers>
+              <ThemeProvider theme={theme}>
+                <Header font={arvo.className} />
+                <Suspense fallback={<Loading />}>
+                  <main className="relative max-w-screen-xl m-auto p-4">
+                    {children}
+                  </main>
+                </Suspense>
+                <Footer />
+              </ThemeProvider>
+            </Providers>
+          </NextAuthProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

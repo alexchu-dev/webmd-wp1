@@ -11,7 +11,7 @@ import { discountData } from "./data"
 
 export default function DiscountsSection() {
   return (
-    <section id="discounts" className="border rounded-xl p-4 mb-4">
+    <section id="discounts" className="border rounded-xl p-4 mb-4 bg-white">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
         <div className="bg-slate-200 col-span-1 rounded-xl h-[500px] text-center justify-center items-center content-center flex flex-col relative">
           <Image

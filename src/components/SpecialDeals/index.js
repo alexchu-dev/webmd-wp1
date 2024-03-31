@@ -10,7 +10,7 @@ import { specialDeals } from "./data.js" // Adjust the path as necessary
 
 export default function SpecialDeals() {
   return (
-    <section id="special-deals" className="border rounded-xl p-4 mb-4">
+    <section id="special-deals" className="border rounded-xl p-4 mb-4 bg-white">
       <h2 className="text-xl font-bold mb-2">SPECIAL DEALS</h2>
       <div className="grid grid-cols-1 gap-4">
         {specialDeals.map((deal) => (

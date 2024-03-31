@@ -13,7 +13,7 @@ import { destinationOfWeek } from "./data.js"
 
 export default function DestinationOfWeek() {
   return (
-    <section id="destination-of-week" className="border rounded-xl p-4 mb-4">
+    <section id="destination-of-week" className="border rounded-xl p-4 mb-4 bg-white">
       <h2 className="text-xl font-bold mb-2">
         DESTINATION OF THE WEEK
         <span className="text-base font-light md:ml-2 block md:inline">

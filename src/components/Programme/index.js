@@ -1,10 +1,10 @@
-export default function ToolsProgramme() {
+export default function Programme() {
   return (
     <section
-      id="tools-programme"
-      className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start justify-start"
+      id="programme"
+      className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start justify-start "
     >
-      <div className="border rounded-xl p-4 mb-4 items-center justify-center min-h-[300px]">
+      <div className="border rounded-xl p-4 mb-4 items-center justify-center min-h-[300px] bg-white">
         <h2 className="text-xl font-bold mb-2">TRIP BUILDER</h2>
         <div className="trip-builder grid grid-cols-1 p-8 text-center mx-auto items-center justify-center max-w-screen-sm px-4">
           <div className="trip-text mb-4">
@@ -17,7 +17,7 @@ export default function ToolsProgramme() {
           </button>
         </div>
       </div>
-      <div className="border rounded-xl p-4 mb-4 items-center justify-center min-h-[300px]">
+      <div className="border rounded-xl p-4 mb-4 items-center justify-center min-h-[300px] bg-white">
         <h2 className="text-xl font-bold mb-2">REWARDS</h2>
         <div className="trip-builder grid grid-cols-1 p-8 text-center mx-auto items-center justify-center max-w-screen-md px-4">
           <div className="trip-text mb-4">
@@ -28,7 +28,7 @@ export default function ToolsProgramme() {
           </button>
         </div>
       </div>
-      <div className="border rounded-xl p-4 mb-4 items-center justify-center min-h-[300px]">
+      <div className="border rounded-xl p-4 mb-4 items-center justify-center min-h-[300px] bg-white">
         <h2 className="text-xl font-bold mb-2">REFERRAL</h2>
         <div className="trip-builder grid grid-cols-1 p-8 text-center mx-auto items-center justify-center max-w-screen-md px-4">
           <div className="trip-text mb-4">

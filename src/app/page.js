@@ -13,7 +13,7 @@ import DiscountsSection from "../components/Discounts"
 import Testimonials from "../components/Testimonials"
 import ReviewComponent from "../components/Review"
 import LatestJournal from "../components/Journal"
-import ToolsProgramme from "../components/ToolsProgramme"
+import Programme from "../components/Programme"
 import { homeSliderData } from "./data-carousel.js"
 
 export default function Home() {
@@ -38,7 +38,7 @@ export default function Home() {
 
       <LatestJournal />
 
-      <ToolsProgramme />
+      <Programme />
     </section>
   )
 }

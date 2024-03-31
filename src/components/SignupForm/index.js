@@ -37,7 +37,7 @@ export default function SignupForm() {
     if (res.ok) {
       Swal.fire("Success", "Account created successfully!", "success").then((result) => {
         if (result.isConfirmed) {
-          router.push('/login');
+          router.push('/auth/login');
         }
       });
     } else {
