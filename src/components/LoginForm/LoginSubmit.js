@@ -6,6 +6,8 @@ import { signIn, signOut, useSession } from "next-auth/react"
 const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
   // useSession hook with next-auth
   const { data: session, status } = useSession()
+  const callbackUrl = process.env.NEXT_PUBLIC_API_URL + "/dashboard"
+  console.log(callbackUrl)
   const renderAuthButtons = () => {
     if (session) {
       return (
@@ -15,7 +17,7 @@ const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
           </div>
           <button
             className="flex justify-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded m-auto mb-4"
-            onClick={() => signOut()}
+            onClick={() => signOut({ callbackUrl: process.env.NEXT_PUBLIC_API_URL })}
           >
             Sign Out
           </button>
@@ -74,7 +76,7 @@ const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
           <hr className="my-4 h-2 border-t-2 bg-slate-40" />
           <button
             className="flex justify-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded m-auto mb-4"
-            onClick={() => signIn("github")}
+            onClick={() => signIn("github", { callbackUrl: callbackUrl })}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +92,7 @@ const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
           </button>
           <button
             className="flex justify-center px-4 py-2 bg-red-600 hover:bg-red-400 text-white rounded m-auto"
-            onClick={() => signIn("google")}
+            onClick={() => signIn("google", { callbackUrl: callbackUrl })}
           >
             <svg
               width="20"

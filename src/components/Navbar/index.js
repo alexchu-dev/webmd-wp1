@@ -182,7 +182,7 @@ export default function Nav() {
                     href="/"
                     onClick={(e) => {
                       e.stopPropagation()
-                      signOut()
+                      signOut({ callbackUrl: process.env.NEXT_PUBLIC_API_URL })
                     }}
                   >
                     Sign Out{" "}
@@ -268,7 +268,7 @@ export default function Nav() {
                 href="/"
                 onClick={(e) => {
                   e.stopPropagation()
-                  signOut()
+                  signOut({ callbackUrl: process.env.NEXT_PUBLIC_API_URL })
                 }}
               >
                 Sign Out{" "}
