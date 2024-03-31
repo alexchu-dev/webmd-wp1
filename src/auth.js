@@ -13,6 +13,10 @@ const myNextAuthOptions = {
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
   ],
+  session:{
+    jwt: false,
+  },
+  database: process.env.MONGODB_URI,
 }
 
 export async function GET(req, res) {

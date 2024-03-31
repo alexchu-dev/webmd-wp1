@@ -16,6 +16,14 @@ export async function POST(request) {
         },
       })
     }
+    if (!name || !email || !password || !email.includes("@")) {
+      return new Response(JSON.stringify({ message: "Invalid input!" }), {
+        status: 400,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+    }
     console.log(name, email, password)
     const hashedPassword = await bcryptjs.hash(password, 10)
     const user = new User({ name, email, password: hashedPassword })
