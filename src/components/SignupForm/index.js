@@ -52,7 +52,7 @@ export default function SignupForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-8 m-4 bg-white rounded-2xl shadow-xl w-full sm:max-w-[400px]"
+      className="m-auto p-8 bg-white rounded-2xl shadow-xl w-full sm:max-w-[400px]"
     >
       <h2 className="text-center text-2xl font-semibold mb-4">Sign Up</h2>
       <div className="mb-4">

@@ -34,7 +34,7 @@ export default function Tips() {
   }
 
   return (
-    <main className="max-w-screen-xl mx-auto p-4">
+    <section>
       <h1 className="text-3xl font-semibold m-2 text-center">Travel Tips</h1>
       <div className="border-b-4 border-[#01afd1] w-1/3 mx-auto mb-6" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 md:p-1 justify-start align-top items-start">
@@ -163,6 +163,6 @@ export default function Tips() {
           </div>
         </div>
       </div>
-    </main>
+    </section>
   )
 }

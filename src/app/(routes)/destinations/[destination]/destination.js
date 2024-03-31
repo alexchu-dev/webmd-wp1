@@ -11,15 +11,14 @@ import { destinations } from "../data.js"
 import { Modal, Box } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 import IconButton from "@mui/material/IconButton"
-import {usePathname, useSearchParams} from "next/navigation"
+import { usePathname, useSearchParams } from "next/navigation"
 import Loading from "./loading.js"
 
 /* Since NextJS 13 the getStaticProps and getStaticPaths are no longer working, therefore I am using another method in here, before creating an API for fetching. */
 const fetchDestinationData = (slug) => {
   return destinations.find((destination) => destination.slug === slug)
 }
-export default function Destination({slug}) {
-  
+export default function Destination({ slug }) {
   const [destination, setDestination] = useState(null)
   const [open, setOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState("")
@@ -39,7 +38,7 @@ export default function Destination({slug}) {
   const handleClose = () => setOpen(false)
 
   if (!destination) {
-    return  <Loading />
+    return <Loading />
   }
 
   const style = {
@@ -47,7 +46,6 @@ export default function Destination({slug}) {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "2/3",
     minWidth: "400px",
     maxWidth: "90%",
     bgcolor: "background.paper",
@@ -56,9 +54,9 @@ export default function Destination({slug}) {
     p: 2,
     outline: "none",
   }
-  
+
   return (
-    <main className="max-w-screen-xl mx-auto p-4">
+    <section>
       {/* <p>This page is {pathname} {searchParams}</p> */}
       <div className="relative mb-4">
         <Image
@@ -125,13 +123,15 @@ export default function Destination({slug}) {
           >
             <CloseIcon />
           </IconButton>
-          <img
+          <Image
             src={selectedImage}
             alt="Expanded view"
-            style={{ width: "100%", height: "auto" }}
+            width={1280}
+            height={960}
+            objectFit="cover"
           />
         </Box>
       </Modal>
-    </main>
+    </section>
   )
 }

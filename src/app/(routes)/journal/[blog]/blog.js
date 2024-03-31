@@ -39,7 +39,6 @@ export default function Blog({slug}) {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "2/3",
     minWidth: "400px",
     maxWidth: "90%",
     bgcolor: "background.paper",
@@ -50,7 +49,7 @@ export default function Blog({slug}) {
   }
 console.log(blog.images[0].url)
   return (
-    <main className="max-w-screen-xl mx-auto p-4">
+    <section>
         <div className="items-center justify-center mb-4">
           <h1 className="text-3xl font-semibold text-center">
             {blog.title}
@@ -67,7 +66,7 @@ console.log(blog.images[0].url)
                   width={640}
                   height={400}
                   className="rounded-xl mb-4 cursor-pointer object-cover h-[400px]"
-                  onClick={() => handleOpen(image)}
+                  onClick={() => handleOpen(blog.images[0].url)}
                 />
               </div>
               <div className="gallery-card relative overflow-hidden content-center justify-center items-center flex">
@@ -97,13 +96,15 @@ console.log(blog.images[0].url)
           >
             <CloseIcon />
           </IconButton>
-          <img
+          <Image
             src={selectedImage}
             alt="Expanded view"
-            style={{ width: "100%", height: "auto" }}
+            width={1280}
+            height={960}
+            objectFit="cover"
           />
         </Box>
       </Modal>
-    </main>
+    </section>
   )
 }

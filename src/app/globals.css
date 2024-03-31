@@ -74,10 +74,10 @@ p {
   margin-bottom: 0.5rem;
 }
 
-input,
+form input,
 textarea {
   color: #000;
-  width: 100%;
+
 }
 
 li {

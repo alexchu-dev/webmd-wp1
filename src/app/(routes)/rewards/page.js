@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function Rewards() {
   return (
-    <main className="max-w-screen-xl mx-auto p-4">
+    <section>
       <h1 className="text-3xl font-semibold m-2 text-center">Rewards</h1>
       <div className="border-b-4 border-[#01afd1] w-1/3 mx-auto mb-6" />
       <div className="text-center font-semibold p-10 items-center justify-center">
@@ -20,6 +20,6 @@ export default function Rewards() {
           className="object-cover md:max-h-[600px] mx-auto" />
         For every mile you travel, you earn your mileage and you can redeem your rewards.
       </div>
-    </main>
+    </section>
   )
 }

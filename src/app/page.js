@@ -17,9 +17,8 @@ import ToolsProgramme from "../components/ToolsProgramme"
 import { homeSliderData } from "./data-carousel.js"
 
 export default function Home() {
-
   return (
-    <main className="relative max-w-screen-xl m-auto p-4">
+    <section>
       {/* Hero Carousel Section using Carousel component, className as props to control style. */}
       <Carousel data={homeSliderData} className="rounded-xl" />
 
@@ -40,7 +39,6 @@ export default function Home() {
       <LatestJournal />
 
       <ToolsProgramme />
-      
-    </main>
+    </section>
   )
 }

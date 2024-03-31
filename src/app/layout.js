@@ -27,13 +27,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${zen.className} min-h-screen`}>
+      <body className={`${zen.className} min-h-screen bg-gray-100`}>
         <AppRouterCacheProvider>
           <Providers>
             <ThemeProvider theme={theme}>
               <Header font={arvo.className} />
-              <Suspense fallback={<Loading/>}>
-              {children}
+              <Suspense fallback={<Loading />}>
+                <main className="relative max-w-screen-xl m-auto p-4">
+                  {children}
+                </main>
               </Suspense>
               <Footer />
             </ThemeProvider>

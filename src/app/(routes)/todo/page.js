@@ -4,10 +4,10 @@ import FormDisplay from "./_components/FormDisplay"
 
 export default function ToDoList() {
   return (
-    <main className="flex justify-center items-center h-screen bg-gray-100">
+    <section className="flex justify-center items-center h-screen">
       <Toaster containerStyle={{top:80}} reverseOrder={false} />
       <FormDisplay />
-    </main>
+    </section>
   )
 }
  

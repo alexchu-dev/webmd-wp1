@@ -33,7 +33,7 @@ export default function Package({ packageId }) {
 
   if (!packageData) {
     return (
-      <main className="max-w-screen-xl mx-auto p-20">Package Not Found.</main>
+      <section className="max-w-screen-xl mx-auto p-20">Loading...</section>
     )
   }
 
@@ -51,7 +51,7 @@ export default function Package({ packageId }) {
   }
 
   return (
-    <main className="max-w-screen-xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
         <Carousel data={packageData.images} className="rounded-xl" />
       </div>
@@ -83,6 +83,6 @@ export default function Package({ packageId }) {
           </div>
         </div>
       </div>
-    </main>
+    </section>
   )
 }
