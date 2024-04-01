@@ -1,16 +1,20 @@
 import { withAuth } from "next-auth/middleware"
 
 export default withAuth(
+  function middleware(request) {
+    if (request.nextUrl.pathname.startsWith("/api/")) {
+      return NextResponse.next()
+    }
+  },
   {
     callbacks: {
-      authorized({ req , token }) {
-        if(token) return true // If there is a token, the user is authenticated
-      }
+      authorized({ req, token }) {
+        if (token) return true // If there is a token, the user is authenticated
+      },
     },
     pages: {
-      signIn: '/auth/login',
-      error: '/auth/login'
-    }
+      signIn: "/auth/login",
+    },
   }
 )
 
@@ -36,7 +40,6 @@ export const config = {
     "/dashboard",
     "/dashboard/:path*",
     "/admin",
-    "/admin/:path*",
-    "/api/:path*"
+    "/admin/:path*"
   ],
 }

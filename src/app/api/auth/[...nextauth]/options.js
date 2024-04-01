@@ -1,4 +1,3 @@
-import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
@@ -6,7 +5,7 @@ import dbConnect from "@/db/mongoose"
 import User from "@/db/User"
 import bcryptjs from "bcryptjs"
 
-const myNextAuthOptions = {
+export const options = {
   providers: [
     GithubProvider({
       clientId: process.env.AUTH_GITHUB_ID,
@@ -84,10 +83,10 @@ const myNextAuthOptions = {
   database: process.env.MONGODB_URI,
 }
 
-export async function GET(req, res) {
-  return NextAuth(req, res, myNextAuthOptions)
-}
+// export async function GET(req, res) {
+//   return NextAuth(req, res, myNextAuthOptions)
+// }
 
-export async function POST(req, res) {
-  return NextAuth(req, res, myNextAuthOptions)
-}
+// export async function POST(req, res) {
+//   return NextAuth(req, res, myNextAuthOptions)
+// }

@@ -6,19 +6,51 @@ export default function ContactForm() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    Swal.fire({
-      title: "Notice",
-      text: "Form not submitted. This will be implemented in wp2",
-      icon: "info",
-      confirmButtonText: "Cool",
-    })
-    console.log(`Name: ${name}, Email: ${email}, Message: ${message}`)
-    setName("")
-    setEmail("")
-    setMessage("")
+    setIsSubmitting(true)
+    try {
+      const sendMessage = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/contact`,
+        {
+          method: "POST",
+          body: JSON.stringify({ name, email, message }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      console.log(sendMessage)
+      if (sendMessage.ok) {
+        Swal.fire({
+          title: "Success",
+          text: "Your message have been sent. Please check  your email for confirmation.",
+          icon: "success",
+          confirmButtonText: "Cool",
+        })
+        setName("")
+        setEmail("")
+        setMessage("")
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: "Something went wrong with the mail system. Please try again later.",
+          icon: "error",
+          confirmButtonText: "Ok",
+        })
+      }
+    } catch (error) {
+      Swal.fire({
+        title: "Error",
+        text: "Something went wrong with the mail system. Please try again later.",
+        icon: "error",
+        confirmButtonText: "Ok",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -60,9 +92,10 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
+        className={`${isSubmitting ? 'bg-gray-300 cursor-wait' : 'bg-blue-500 hover:bg-blue-700'} text-white py-2 px-4 rounded`}
+        disabled={isSubmitting}
       >
-        Send
+        {isSubmitting ? "Submitting..." : "Send"}
       </button>
     </form>
   )

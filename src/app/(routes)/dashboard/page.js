@@ -1,12 +1,12 @@
 import { getServerSession } from "next-auth/next"
-import { myNextAuthOptions } from "@/auth"
+import { options } from "../../api/auth/[...nextauth]/options"
 import { redirect } from "next/navigation"
 
 export default async function Dashboard() {
-  const session = await getServerSession(myNextAuthOptions)
+  const session = await getServerSession(options)
 
   if (!session) {
-    redirect("/auth/login")
+    redirect("/auth/signup")
   }
 
   return (
