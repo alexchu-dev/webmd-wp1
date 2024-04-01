@@ -16,7 +16,8 @@ export async function POST(request) {
         <h1>Ports Travel</h1>
         <p>Hi ${name},</p>
         <p>Thank you for contacting me! I have received your message and will get back to you as soon as possible.</p>
-        <p>Developer - Alex Chu</p>`
+        <p>Developer - Alex Chu</p>
+        <p>https://alexchu.dev</p>`
 
       await sendMail({
         email: email,
