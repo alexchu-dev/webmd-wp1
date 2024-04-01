@@ -12,11 +12,18 @@ export async function POST(request) {
       })
     } else {
       // Send confirmation email
+      const confirmMessage = `
+        <h1>Ports Travel</h1>
+        <p>Hi ${name},</p>
+        <p>Thank you for contacting me! I have received your message and will get back to you as soon as possible.</p>
+        <p>Developer - Alex Chu</p>`
+
       await sendMail({
         email: email,
         subject: `Hi ${name}! Thank you for contactint Ports Travel!`,
-        html: `Thank you for contacting me! I have received your message and will get back to you as soon as possible.<br/><br/>Developer - Alex Chu<br>https://alexchu.dev`,
+        html: confirmMessage,
       })
+
       const newMessage = `
         <h1>Ports Travel</h1>
         <p><strong>Name:</strong> ${name}</p>
