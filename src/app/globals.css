@@ -99,3 +99,33 @@ li {
 .photo-credits a {
   text-decoration: underline;
 }
+.journal-banner label{
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-align: center;
+}
+@media only screen and (min-width: 1280px) {
+  .journal-banner {
+    height: 600px;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1279px) {
+  .journal-banner {
+    height: 480px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .journal-banner {
+    height: 400px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .journal-banner {
+    height: 400px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .journal-banner {
+    height: 300px;
+  }
+}

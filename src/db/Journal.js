@@ -7,6 +7,14 @@ const JournalSchema = new mongoose.Schema({
     maxlength: [60, "Title cannot be more than 60 characters"],
   },
   slug: String,
+  destination: {
+    type: String,
+    required: [true, "Please provide a destination for this journal."],
+  },
+  image: {
+    type: String,
+    required: [true, "Please provide the url of the image."],
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -21,10 +29,7 @@ const JournalSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide content for this journal."],
   },
-  image: {
-    type: String,
-    required: [true, "Please provide the url of the image."],
-  },
 })
 
-export default mongoose.models.Journal || mongoose.model("Journal", JournalSchema)
+export default mongoose.models.Journal ||
+  mongoose.model("Journal", JournalSchema)
