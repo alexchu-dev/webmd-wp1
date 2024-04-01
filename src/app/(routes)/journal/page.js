@@ -8,15 +8,9 @@ export const metadata = {
     "The best travel agency in Portsmouth and beyond, providing best options for your next trip since 2024. © Alex Chu 2024",
 }
 
-async function getData() {
+export default async function Journal() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/journals`)
   const data = await res.json()
-  return data
-}
-
-export default async function Journal() {
-  const data = await getData()
-  console.log(data)
   return (
     <section>
       <h1 className="text-3xl font-semibold m-2 text-center">Journal</h1>
