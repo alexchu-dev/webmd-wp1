@@ -12,7 +12,17 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: [true, "Please provide a password for this user."],
+    required: false,
+  },
+  image: {
+    type: String,
+    required: true,
+    default: "/img/avatar.jpg",
+  },
+  provider: {
+    type: String,
+    required: true,
+    default: "credentials",
   },
   role: {
     type: String,

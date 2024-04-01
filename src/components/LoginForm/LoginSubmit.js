@@ -1,18 +1,21 @@
-import React from "react"
+import React, {useEffect} from "react"
 import Swal from "sweetalert2"
 import Link from "next/link"
 import { signIn, signOut, useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
+import Loading from "@/app/loading"
 
 const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
   // useSession hook with next-auth
-  const { data: session, status } = useSession()
+  const session = useSession()
+  const router = useRouter()
   const callbackUrl = process.env.NEXT_PUBLIC_API_URL + "/dashboard"
   const renderAuthButtons = () => {
-    if (session) {
+    if (session?.status === "authenticated") {
       return (
         <>
           <div className="text-center my-8">
-            Signed in as {session?.user?.name}
+            Signed in as {session?.data?.user?.name}
           </div>
           <button
             className="flex justify-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded m-auto mb-4"
@@ -115,7 +118,7 @@ const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await signIn("credentials", { email, password, redirect: false,  callbackUrl: callbackUrl})
+      const res = await signIn("credentials", { email, password, redirect: false})
       console.log(res)
       if (res.ok) {
         console.log("Login Success")
@@ -142,7 +145,11 @@ const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
       })
     }
   }
-  
+
+  if (session.status === "loading") {
+    return <Loading />
+  }
+
   return (
     <>
       <div className="m-auto p-8 bg-white rounded-2xl shadow-xl w-full sm:max-w-[400px]">
