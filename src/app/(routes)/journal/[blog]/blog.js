@@ -77,7 +77,7 @@ export default function Blog({ slug }) {
         <div
           className="journal-banner max-w-screen-xl bg-center pb-96 relative"
           style={{
-            backgroundImage: `url(${blog.images[0].url})`,
+            backgroundImage: `url(${blog.image.url})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
           }}

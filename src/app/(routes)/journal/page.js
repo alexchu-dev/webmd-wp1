@@ -1,6 +1,7 @@
 import React from "react"
 import Link from "next/link"
 import Image from "next/image.js"
+import { blogs } from "./data.js"
 
 export const metadata = {
   title: "Journal | Ports Travel - Best Travel Agency in Portsmouth and Beyond",
@@ -9,9 +10,9 @@ export const metadata = {
 }
 
 export default async function Journal() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/journals`)
-  const data = await res.json()
-  console.log(data)
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/journals`)
+  // const data = await res.json()
+  // console.log(data)
   return (
     <section>
       <h1 className="text-3xl font-semibold m-2 text-center">Journal</h1>
