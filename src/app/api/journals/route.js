@@ -3,9 +3,19 @@ import Journal from "@/db/Journal"
 
 export async function POST(request) {
   await dbConnect()
-  const { title, slug, destination, image, user_id, date, excerpt, content,  } = await request.json()
+  const { title, slug, destination, image, user_id, date, excerpt, content } =
+    await request.json()
   try {
-    const journal = new Journal({ title, slug, destination, image, user_id, date, excerpt, content })
+    const journal = new Journal({
+      title,
+      slug,
+      destination,
+      image,
+      user_id,
+      date,
+      excerpt,
+      content,
+    })
     const savedJournal = await journal?.save()
     console.log(savedJournal)
     return new Response(JSON.stringify(savedJournal), {
@@ -28,8 +38,7 @@ export async function POST(request) {
 export async function GET() {
   await dbConnect()
   try {
-    const res = await Journal.find().lean().limit(5)
-    console.log(`Res`,res)
+    const res = await Journal.find().lean().limit(10)
     return new Response(JSON.stringify(res), {
       status: 200,
       headers: {
