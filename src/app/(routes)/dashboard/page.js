@@ -1,9 +1,10 @@
-import { getMySession } from "@/lib/getMySession"
+import { getServerSession } from "next-auth/next"
+import { myNextAuthOptions } from "@/auth"
 import { redirect } from "next/navigation"
 
 export default async function Dashboard() {
-  const session = await getMySession()
-  
+  const session = await getServerSession(myNextAuthOptions)
+
   if (!session) {
     redirect("/auth/login")
   }
