@@ -22,10 +22,10 @@ export const options = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        console.log("Credentials ", credentials )
         await dbConnect()
         try {
           const user = await User.findOne({ email: credentials.email })
-          console.log(user)
           if (
             user &&
             (await bcryptjs.compare(credentials.password, user.password))
@@ -63,9 +63,10 @@ export const options = {
             })
             await newUser.save()
           } else {
+            user.role = userExists.role
             await User.findOneAndUpdate({email: user.email },{image: user.image, name: user.name, provider: account.provider})
           }
-          return true
+          return user
         } catch (error) {
           console.log(error)
           return false
@@ -73,6 +74,18 @@ export const options = {
       }
       return false
     },
+    async jwt({token, account, profile }) {
+      return token
+    },
+    async session({ session, token }) {
+      await dbConnect();
+      const user = await User.findOne({ email: session.user.email });
+      if (user) {
+        session.user.role = user.role;
+      }
+      console.log("Session callback triggered")
+      return session
+    }
   },
   session: {
     strategy: "jwt",

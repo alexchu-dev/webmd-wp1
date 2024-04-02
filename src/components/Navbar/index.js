@@ -19,16 +19,28 @@ export default function Nav() {
     setIsOpen(!isOpen)
   }
 
-  /* Handler for Drop Down Menu */
-  const [anchorEl, setAnchorEl] = useState(null)
-  const open = Boolean(anchorEl)
+  /* Handler for About Drop Down Menu */
+  const [aboutAnchorEl, setAboutAnchorEl] = useState(null)
+  const isAboutOpen = Boolean(aboutAnchorEl)
 
-  const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget)
+  const handleAboutOpen = (event) => {
+    setAboutAnchorEl(event.currentTarget)
   }
 
-  const handleMenuClose = () => {
-    setAnchorEl(null)
+  /* Handler for Profile Drop Down Menu */
+  const [userAnchorEl, setUserAnchorEl] = useState(null)
+  const isUserOpen = Boolean(userAnchorEl)
+
+  const handleUserOpen = (event) => {
+    setUserAnchorEl(event.currentTarget)
+  }
+
+  const handleUserClose = () => {
+    setUserAnchorEl(null)
+  }
+
+  const handleAboutClose = () => {
+    setAboutAnchorEl(null)
   }
 
   /* Handle route change */
@@ -36,7 +48,6 @@ export default function Nav() {
 
   // Next-Auth useSession Hook
   const { data: session, status } = useSession()
-
 
   useEffect(() => {
     setIsOpen(false)
@@ -138,16 +149,16 @@ export default function Nav() {
                 <Link href="/tips">Tips</Link>
               </li>
               <li className="mb-4 relative group">
-                <button onClick={handleMenuOpen}>About</button>
+                <button onClick={handleAboutOpen}>About</button>
 
                 <Menu
                   id="about-menu"
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleMenuClose}
+                  anchorEl={aboutAnchorEl}
+                  open={isAboutOpen}
+                  onClose={handleAboutClose}
                   MenuListProps={{
                     "aria-labelledby": "about-menu-button",
-                    onMouseLeave: handleMenuClose,
+                    onMouseLeave: handleAboutClose,
                   }}
                   sx={{
                     "& .MuiPaper-root": {
@@ -156,16 +167,16 @@ export default function Nav() {
                     },
                   }}
                 >
-                  <MenuItem onClick={handleMenuClose}>
+                  <MenuItem onClick={handleAboutClose}>
                     <Link href="/about/">About Us</Link>
                   </MenuItem>
-                  <MenuItem onClick={handleMenuClose}>
+                  <MenuItem onClick={handleAboutClose}>
                     <Link href="/about/refund">Refund Policy</Link>
                   </MenuItem>
-                  <MenuItem onClick={handleMenuClose}>
+                  <MenuItem onClick={handleAboutClose}>
                     <Link href="/about/privacy">Privacy Policy</Link>
                   </MenuItem>
-                  <MenuItem onClick={handleMenuClose}>
+                  <MenuItem onClick={handleAboutClose}>
                     <Link href="/about/careers">Careers</Link>
                   </MenuItem>
                 </Menu>
@@ -176,25 +187,60 @@ export default function Nav() {
               </li>
               <li className="mb-4">
                 {session ? (
-                  <Link
-                    className="flex items-center gap-2"
-                    href="/"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      signOut({ callbackUrl: process.env.NEXT_PUBLIC_API_URL })
-                    }}
-                  >
-                    Sign Out{" "}
-                    {session.user?.image && (
-                      <Image
-                        src={session.user.image}
-                        alt="User"
-                        width={30}
-                        height={30}
-                        className="rounded-full"
-                      />
-                    )}
-                  </Link>
+                  <>
+                    <Link
+                      className="flex items-center gap-2"
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault()
+                        handleUserOpen(e)
+                      }}
+                    >
+                      {session?.user?.name}
+                      {session.user?.image && (
+                        <Image
+                          src={session.user.image}
+                          alt="User"
+                          width={30}
+                          height={30}
+                          className="rounded-full"
+                        />
+                      )}
+                    </Link>
+                    <Menu
+                      id="user-menu"
+                      anchorEl={userAnchorEl}
+                      open={isUserOpen}
+                      onClose={handleUserClose}
+                      MenuListProps={{
+                        "aria-labelledby": "user-menu-button",
+                        onMouseLeave: handleUserClose,
+                      }}
+                      sx={{
+                        "& .MuiPaper-root": {
+                          backgroundColor: "skyblue",
+                          color: "white",
+                        },
+                      }}
+                    >
+                      <MenuItem onClick={handleUserClose}>
+                        <Link href="/dashboard">Dashboard</Link>
+                      </MenuItem>
+                      <MenuItem onClick={handleUserClose}>
+                        <Link
+                          href="#"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            signOut({
+                              callbackUrl: process.env.NEXT_PUBLIC_API_URL,
+                            })
+                          }}
+                        >
+                          Sign out
+                        </Link>
+                      </MenuItem>
+                    </Menu>
+                  </>
                 ) : (
                   <Link href="/auth/login">Login</Link>
                 )}
@@ -211,7 +257,7 @@ export default function Nav() {
         <Link href="/">
           <Image src="/logo_w.png" alt="Ports Travel" width={150} height={50} />
         </Link>
-        <ul className="flex gap-8 w-full justify-center">
+        <ul className="flex gap-8 w-full justify-center items-center">
           <li className="ml-4 relative group">
             <Link href="/destinations">Destinations</Link>
           </li>
@@ -225,16 +271,16 @@ export default function Nav() {
             <Link href="/tips">Tips</Link>
           </li>
           <li className="ml-4 relative group">
-            <button onClick={handleMenuOpen}>About</button>
+            <button onClick={handleAboutOpen}>About</button>
 
             <Menu
               id="about-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleMenuClose}
+              anchorEl={aboutAnchorEl}
+              open={isAboutOpen}
+              onClose={handleAboutClose}
               MenuListProps={{
                 "aria-labelledby": "about-menu-button",
-                onMouseLeave: handleMenuClose,
+                onMouseLeave: handleAboutClose,
               }}
               sx={{
                 "& .MuiPaper-root": {
@@ -243,16 +289,16 @@ export default function Nav() {
                 },
               }}
             >
-              <MenuItem onClick={handleMenuClose}>
+              <MenuItem onClick={handleAboutClose}>
                 <Link href="/about/">About Us</Link>
               </MenuItem>
-              <MenuItem onClick={handleMenuClose}>
+              <MenuItem onClick={handleAboutClose}>
                 <Link href="/about/refund">Refund Policy</Link>
               </MenuItem>
-              <MenuItem onClick={handleMenuClose}>
+              <MenuItem onClick={handleAboutClose}>
                 <Link href="/about/privacy">Privacy Policy</Link>
               </MenuItem>
-              <MenuItem onClick={handleMenuClose}>
+              <MenuItem onClick={handleAboutClose}>
                 <Link href="/about/careers">Careers</Link>
               </MenuItem>
             </Menu>
@@ -262,25 +308,60 @@ export default function Nav() {
           </li>
           <li className="ml-4">
             {session ? (
-              <Link
-                className="flex items-center gap-2"
-                href="/"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  signOut({ callbackUrl: process.env.NEXT_PUBLIC_API_URL })
-                }}
-              >
-                Sign Out{" "} {session?.user?.name}
-                {session.user?.image && (
-                  <Image
-                    src={session.user.image}
-                    alt="User"
-                    width={20}
-                    height={20}
-                    className="rounded-full"
-                  />
-                )}
-              </Link>
+              <>
+                <Link
+                  className="flex items-center gap-2"
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleUserOpen(e)
+                  }}
+                >
+                  {session?.user?.name}
+                  {session.user?.image && (
+                    <Image
+                      src={session.user.image}
+                      alt="User"
+                      width={30}
+                      height={30}
+                      className="rounded-full"
+                    />
+                  )}
+                </Link>
+                <Menu
+                  id="user-menu"
+                  anchorEl={userAnchorEl}
+                  open={isUserOpen}
+                  onClose={handleUserClose}
+                  MenuListProps={{
+                    "aria-labelledby": "user-menu-button",
+                    onMouseLeave: handleUserClose,
+                  }}
+                  sx={{
+                    "& .MuiPaper-root": {
+                      backgroundColor: "skyblue",
+                      color: "white",
+                    },
+                  }}
+                >
+                  <MenuItem onClick={handleUserClose}>
+                    <Link href="/dashboard">Dashboard</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleUserClose}>
+                    <Link
+                      href="#"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        signOut({
+                          callbackUrl: process.env.NEXT_PUBLIC_API_URL,
+                        })
+                      }}
+                    >
+                      Sign out
+                    </Link>
+                  </MenuItem>
+                </Menu>
+              </>
             ) : (
               <Link href="/auth/login">Login</Link>
             )}
