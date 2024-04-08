@@ -58,7 +58,7 @@ export async function GET(request) {
     } else {
       if (sort === "latest")
         journal = await Journal.find().lean().sort({ date: -1 }).limit(3)
-      journal = await Journal.find().lean().sort({ date: -1 }).limit(10)
+      else journal = await Journal.find().lean().sort({ date: -1 }).limit(10)
     }
 
     return new Response(JSON.stringify(journal), {
