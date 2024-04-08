@@ -5,17 +5,13 @@ University of Portsmouth
 "use client"
 import React, { useState, useEffect } from "react"
 import Image from "next/image.js"
-import { blogs } from "../data.js"
 import DOMPurify from "dompurify"
 import parse from "html-react-parser"
+import Loading from "@/app/loading"
 import { Modal, Box } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 import IconButton from "@mui/material/IconButton"
 import { Arvo, Parisienne } from "next/font/google"
-
-const fetchBlogData = (slug) => {
-  return blogs.find((blog) => blog.slug === slug)
-}
 
 const paris = Parisienne({
   weight: ["400"],
@@ -31,10 +27,19 @@ export default function Blog({ slug }) {
   const [blog, setBlog] = useState(null)
   const [open, setOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState("")
+
   useEffect(() => {
-    const data = fetchBlogData(slug)
-    console.log(data)
-    setBlog(data)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/journals?slug=${slug}`)
+      .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+      .then((data) => setBlog(data))
+      .catch((error) => {
+        if (error.status === 404) {
+          setBlog("not-found")
+        } else {
+          console.error("Fetching error:", error)
+          setBlog("error")
+        }
+      })
   }, [slug])
 
   const handleOpen = (image) => {
@@ -44,10 +49,19 @@ export default function Blog({ slug }) {
 
   const handleClose = () => setOpen(false)
 
+  if (blog === "not-found") {
+    return <main className="max-w-screen-xl mx-auto p-20 text-center"><h1 className="text-2xl font-bold">Journal not found.</h1></main>;
+  }
+  
+  if (blog === "error") {
+    return <main className="max-w-screen-xl mx-auto p-20"><h1 className="text-2xl font-bold">An error occurred.</h1></main>;
+  }
+  
   if (!blog) {
-    return <main className="max-w-screen-xl mx-auto p-20">Loading...</main>
+    return <Loading />
   }
 
+  const date = new Date(blog.date)
   // Sanitize content
   blog.content = DOMPurify.sanitize(blog.content)
 
@@ -72,6 +86,8 @@ export default function Blog({ slug }) {
         >
           {blog.title}
         </h1>
+        <p className="text-center font-bold">[{date.toISOString().substring(0, 10)}]</p>
+        {/* <p className="text-center date">{date.toISOString().substring(0, 10)}</p> */}
       </div>
       <section className="mb-2">
         <div

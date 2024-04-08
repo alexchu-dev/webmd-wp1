@@ -1,5 +1,4 @@
 import Blog from "./blog";
-import { blogs } from "../data.js";
 
 export const metadata = {
   title: "Journal | Ports Travel - Explore the World with Us",
@@ -7,7 +6,9 @@ export const metadata = {
 };
 
 export async function generateStaticParams() {
-    return blogs.map((blog) => ({
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/journals`)
+  const journals = await res?.json()
+    return journals?.map((blog) => ({
       blog: blog.slug,
     }))
   }

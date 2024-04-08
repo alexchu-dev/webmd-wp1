@@ -32,11 +32,11 @@ export default function Home() {
 
       <DiscountsSection />
 
+      <LatestJournal />
+
       <Testimonials />
 
       <ReviewComponent />
-
-      <LatestJournal />
 
       <Programme />
     </section>

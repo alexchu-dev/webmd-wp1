@@ -15,7 +15,7 @@ export async function GET(req) {
   }
   await dbConnect()
   try {
-    const journal = await Journal.find({ user: session.user.id })
+    const journal = await Journal.find({ user: session.user.id }).lean().limit(10)
     if (!journal) {
       return new Response(JSON.stringify({ message: "Journal not found" }), {
         status: 404,
@@ -24,8 +24,13 @@ export async function GET(req) {
         },
       })
     } else {
-      console.log("Getting journal")
-      return new Response(JSON.stringify(journal))
+      console.log("Getting journal in dashboard...")
+      return new Response(JSON.stringify(journal), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
     }
   } catch (error) {
     return new Response(JSON.stringify({ message: error.message }), {
