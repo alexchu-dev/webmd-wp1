@@ -14,6 +14,13 @@ export const options = {
     GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
+      // profile(profile) {
+      //   console.log("Profile ", profile)
+      //   return {role: profile.role ?? "user",
+      //   id: profile.sub,
+      //   name: profile.name,
+      //   email: profile.email,}
+      // }
     }),
     CredentialsProvider({
       name: "Credentials",
@@ -83,7 +90,8 @@ export const options = {
       if (user) {
         session.user.role = user.role;
       }
-      console.log("Session callback triggered")
+      console.log(session.user)
+      console.log("Session callback triggered: ", session.user.role)
       return session
     }
   },

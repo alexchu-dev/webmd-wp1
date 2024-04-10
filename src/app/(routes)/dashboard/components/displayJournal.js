@@ -14,7 +14,7 @@ export default function DisplayJournal() {
       .then((data) => setJournals(data))
   }, [])
 
-  console.log(journals)
+  console.log("UseSession: ",session)
   if (status === "loading") {
     return <p>Loading...</p>
   }

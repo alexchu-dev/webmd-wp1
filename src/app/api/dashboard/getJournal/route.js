@@ -1,10 +1,12 @@
 import dbConnect from "@/db/mongoose"
+import User from "@/db/User"
 import Journal from "@/db/Journal"
 import { getServerSession } from "next-auth/next"
 import { options } from "../../auth/[...nextauth]/options"
 
 export async function GET(req) {
   const session = await getServerSession(options)
+  console.log("Dashboard API Session: ", session)
   if (!session) {
     return new Response(JSON.stringify({ message: "Unauthorized" }), {
       status: 403,
@@ -15,7 +17,10 @@ export async function GET(req) {
   }
   await dbConnect()
   try {
-    const journal = await Journal.find({ user: session.user.id }).lean().limit(10)
+    const isAuthor = await User.findOne({ email: session.user.email })
+    console.log("Is Author: ", isAuthor._id)
+    const journal = await Journal.find({ user_id: isAuthor._id }).lean().limit(10)
+    console.log("Journal: ", journal)
     if (!journal) {
       return new Response(JSON.stringify({ message: "Journal not found" }), {
         status: 404,
