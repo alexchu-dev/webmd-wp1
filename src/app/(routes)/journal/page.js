@@ -15,7 +15,7 @@ export const metadata = {
 }
 
 export default async function Journal() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/journals`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/journals`,{ next: { revalidate: 300 }}) // Set revalidate to 5 minutes to refresh cache
   const journals = await res.json()
   return (
     <section>

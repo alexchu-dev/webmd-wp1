@@ -1,5 +1,5 @@
 import Journal from "@/db/Journal"
-import dbConnect from "@/db/mongoose"
+import dbConnect from "@/lib/mongoose"
 
 export async function GET(request) {
   await dbConnect()
@@ -12,7 +12,7 @@ export async function GET(request) {
       url: "/img/paris/paris-4353533_1920.jpg",
       alt: "Paris",
     },
-    user_id: "660a0222067d6c6a29411f19",
+    user_id: "1",
     date: "2024-01-11",
     excerpt: "testing...",
     content: "<p>test</p>",

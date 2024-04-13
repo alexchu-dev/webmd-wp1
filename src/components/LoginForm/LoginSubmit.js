@@ -1,4 +1,4 @@
-import React, {useEffect} from "react"
+import React from "react"
 import Swal from "sweetalert2"
 import Link from "next/link"
 import { signIn, signOut, useSession } from "next-auth/react"
@@ -149,7 +149,10 @@ const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
   if (session.status === "loading") {
     return <Loading />
   }
-
+  if (session) {
+    router.push("/dashboard")
+  }
+  
   return (
     <>
       <div className="m-auto p-8 bg-white rounded-2xl shadow-xl w-full sm:max-w-[400px]">

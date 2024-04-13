@@ -1,26 +1,55 @@
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
-import dbConnect from "@/db/mongoose"
+import dbConnect from "@/lib/mongoose"
 import User from "@/db/User"
 import bcryptjs from "bcryptjs"
 
 export const options = {
   providers: [
     GithubProvider({
+      async profile(profile) {
+        // console.log("Github Profile", profile)
+        let userRole = "Github user"
+        await dbConnect()
+        try {
+          const user = await User.findOne({ email: profile?.email })
+          if (user) {
+            userRole = user.role
+          }
+        } catch (error) {
+          console.log(error)
+        }
+        return {
+          ...profile,
+          role: userRole,
+        }
+      },
       clientId: process.env.AUTH_GITHUB_ID,
       clientSecret: process.env.AUTH_GITHUB_SECRET,
     }),
     GoogleProvider({
+      async profile(profile) {
+        // console.log("Google Profile", profile)
+        let userRole = "Google user"
+        await dbConnect()
+        try {
+          const user = await User.findOne({ email: profile?.email })
+          if (user) {
+            userRole = user.role
+          }
+        } catch (error) {
+          console.log(error)
+        }
+        return {
+          ...profile,
+          id: profile.sub,
+          image: profile.picture,
+          role: userRole,
+        }
+      },
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
-      // profile(profile) {
-      //   console.log("Profile ", profile)
-      //   return {role: profile.role ?? "user",
-      //   id: profile.sub,
-      //   name: profile.name,
-      //   email: profile.email,}
-      // }
     }),
     CredentialsProvider({
       name: "Credentials",
@@ -29,7 +58,6 @@ export const options = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        console.log("Credentials ", credentials )
         await dbConnect()
         try {
           const user = await User.findOne({ email: credentials.email })
@@ -51,13 +79,13 @@ export const options = {
   ],
   callbacks: {
     async signIn({ user, account }) {
-
       if (account.provider === "credentials") {
         return true
       }
       if (account.provider === "github" || account.provider === "google") {
         await dbConnect()
         console.log("DB connected")
+        console.log("User :", user)
         try {
           const userExists = await User.findOne({ email: user.email })
           console.log(`Exist? ${userExists}`)
@@ -65,13 +93,16 @@ export const options = {
             const newUser = new User({
               email: user.email,
               name: user.name,
-              image: user.image,
+              image: user.picture,
               provider: account.provider,
             })
             await newUser.save()
           } else {
             user.role = userExists.role
-            await User.findOneAndUpdate({email: user.email },{image: user.image, name: user.name, provider: account.provider})
+            await User.findOneAndUpdate(
+              { email: user.email },
+              { image: user.picture, name: user.name, provider: account.provider }
+            )
           }
           return user
         } catch (error) {
@@ -81,19 +112,18 @@ export const options = {
       }
       return false
     },
-    async jwt({token, account, profile }) {
+    async jwt({ token, user }) {
+      if(user) {
+        token.role = user.role
+      }
       return token
     },
     async session({ session, token }) {
-      await dbConnect();
-      const user = await User.findOne({ email: session.user.email });
-      if (user) {
-        session.user.role = user.role;
+      if (session?.user) {
+        session.user.role = token.role
       }
-      console.log(session.user)
-      console.log("Session callback triggered: ", session.user.role)
       return session
-    }
+    },
   },
   session: {
     strategy: "jwt",
@@ -103,11 +133,3 @@ export const options = {
   },
   database: process.env.MONGODB_URI,
 }
-
-// export async function GET(req, res) {
-//   return NextAuth(req, res, myNextAuthOptions)
-// }
-
-// export async function POST(req, res) {
-//   return NextAuth(req, res, myNextAuthOptions)
-// }

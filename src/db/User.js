@@ -1,6 +1,10 @@
 import mongoose from "mongoose"
+import UserSequence from "./UserSequence";
 
 const UserSchema = new mongoose.Schema({
+  user_id: {
+    type: Number
+  },
   name: {
     type: String,
     required: [true, "Please provide a name for this user."],
@@ -19,22 +23,39 @@ const UserSchema = new mongoose.Schema({
     required: true,
     default: "/img/avatar.jpg",
   },
-  provider: {
-    type: String,
-    required: true,
-    default: "credentials",
-  },
   role: {
     type: String,
     enum: ["user", "admin"],
     default: "user",
   },
-  resetPasswordToken: String,
-  resetPasswordExpire: Date,
+  provider: {
+    type: String,
+    required: true,
+    default: "credentials",
+  },
   createdAt: {
     type: Date,
     default: Date.now,
   },
 })
+
+// UserSchema.pre(
+//   "validate", function (next) {
+//     console.log("Pre Validate")
+//     next()
+//   }
+// )
+
+UserSchema.pre('save', async function () {
+  if (this.isNew) {
+    try {
+      const seq = await UserSequence.findByIdAndUpdate('user_id', { $inc: { seq: 1 } }, { new: true, upsert: true });
+      this.user_id = seq.seq;
+      console.log("UserSequence ", this.user_id);
+    } catch (error) {
+      throw error;
+    }
+  }
+});
 
 export default mongoose.models.User || mongoose.model("User", UserSchema)

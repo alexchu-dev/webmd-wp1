@@ -4,7 +4,11 @@ import DisplayJournal from "./components/displayJournal"
 
 export default async function Dashboard() {
   const session = await getServerSession(options)
-  console.log("Server Session ", session)
+
+  if (!session) {
+    redirect(`/api/auth/signin?callbackUrl=${process.env.NEXT_PUBLIC_API_URL}/dashboard/`)
+  }
+
   return (
     <section>
       <h1 className="text-3xl font-semibold m-2 text-center">Dashboard</h1>

@@ -5,11 +5,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { Menu, MenuItem } from "@mui/material"
 import { signOut, useSession } from "next-auth/react"
-// import { useAtom } from "jotai"
-// import { atomWithStorage } from "jotai/utils"
-// import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs"
-
-// const darkModeAtom = atomWithStorage("darkMode", false)
 
 export default function Nav() {
   /* Hamburger Button state */
@@ -53,11 +48,8 @@ export default function Nav() {
     setIsOpen(false)
   }, [pathname])
 
-  /* Dark Mode */
-  // const [darkMode, setDarkMode] = useAtom(darkModeAtom)
   return (
     <>
-      {/* <h1 className="">Welcome to {darkMode ? "dark" : darkMode} mode!</h1> */}
       {/* Nav for mobile/tablet screens */}
       <div className="md:hidden">
         {/* Hamburger button */}
@@ -366,19 +358,6 @@ export default function Nav() {
               <Link href="/auth/login">Login</Link>
             )}
           </li>
-          {/* <li>
-            {darkMode ? (
-              <BsFillMoonStarsFill
-                onClick={() => setDarkMode(!darkMode)}
-                className="cursor-pointer text-lg dark:text-yellow-200"
-              />
-            ) : (
-              <BsFillSunFill
-                onClick={() => setDarkMode(!darkMode)}
-                className="cursor-pointer text-lg dark:text-yellow-200"
-              />
-            )}
-          </li> */}
         </ul>
       </nav>
     </>

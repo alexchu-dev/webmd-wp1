@@ -1,6 +1,10 @@
 import mongoose from "mongoose"
+import JournalSequence from "./JournalSequence"
 
 const JournalSchema = new mongoose.Schema({
+  post_id: {
+    type: Number
+  },
   title: {
     type: String,
     required: [true, "Please provide a title for this journal."],
@@ -25,8 +29,7 @@ const JournalSchema = new mongoose.Schema({
     },
   },
   user_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "user_id",
+    type: Number,
     required: true,
   },
   date: { type: Date, default: Date.now },
@@ -39,6 +42,18 @@ const JournalSchema = new mongoose.Schema({
     required: [true, "Please provide content for this journal."],
   },
 })
+
+JournalSchema.pre('save', async function () {
+  if (this.isNew) {
+    try {
+      const seq = await JournalSequence.findByIdAndUpdate('post_id', { $inc: { seq: 1 } }, { new: true, upsert: true });
+      this.post_id = seq.seq;
+      console.log("JournalSequence ", this.user_id);
+    } catch (error) {
+      throw error;
+    }
+  }
+});
 
 export default mongoose.models.Journal ||
   mongoose.model("Journal", JournalSchema)

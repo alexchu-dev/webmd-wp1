@@ -1,4 +1,4 @@
-import dbConnect from "@/db/mongoose"
+import dbConnect from "@/lib/mongoose"
 import User from "@/db/User"
 import { sendMail } from "@/lib/mailer"
 import bcryptjs from "bcryptjs"
@@ -27,6 +27,7 @@ export async function POST(request) {
     console.log(name, email, password)
     const hashedPassword = await bcryptjs.hash(password, 10)
     const user = new User({ name, email, password: hashedPassword })
+    console.log("Going to save now...")
     const savedUser = await user?.save()
     console.log(savedUser)
 

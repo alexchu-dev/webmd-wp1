@@ -1,6 +1,7 @@
 import { withAuth } from "next-auth/middleware"
 
 export default withAuth(
+  
   function middleware(request) {
     if (request.nextUrl.pathname.startsWith("/api/")) {
       return NextResponse.next()

@@ -1,5 +1,5 @@
 // This Login Route is a legacy option. Now the site is using the Next-Auth for authentication.
-import dbConnect from "@/db/mongoose"
+import dbConnect from "@/lib/mongoose"
 import User from "@/db/User"
 import bcryptjs from "bcryptjs"
 
