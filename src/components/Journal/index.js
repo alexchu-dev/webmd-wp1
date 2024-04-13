@@ -39,13 +39,13 @@ export default function LatestJournal() {
     >
       <h2 className="text-xl font-bold mb-2">LATEST JOURNAL</h2>
       <div className="journal-entries grid grid-cols-1 md:grid-cols-3 gap-4">
-        {blog.map(({ slug, title, image, date, excerpt }) => (
+        {blog?.map(({ slug, title, image, date, excerpt, user_id }) => (
           <div
             key={slug}
             className="journal-entry rounded-lg overflow-hidden shadow-lg justify-start"
           >
             <div className="relative w-full h-[300px]">
-              <Link href={`journal/${slug}`}>
+              <Link href={`journal/${user_id}/${slug}`}>
                 <Image
                   src={image.url}
                   alt={image.alt}
@@ -65,7 +65,7 @@ export default function LatestJournal() {
               <p className="excerpt">
                 {excerpt}
                 <Link
-                  href={`/journal/${slug}`}
+                  href={`/journal/${user_id}/${slug}`}
                   className="font-semibold color3 hover:text-blue-700 ml-2"
                 >
                   [Read More]

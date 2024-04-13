@@ -40,13 +40,14 @@ export async function GET(request) {
 
   const url = new URL(request.url)
   const slug = url.searchParams.get("slug")
+  const user_id = url.searchParams.get("user_id")
   const sort = url.searchParams.get("sort")
 
   try {
     let journal
 
-    if (slug) {
-      journal = await Journal.findOne({ slug }).lean()
+    if (slug && user_id) {
+      journal = await Journal.findOne({ user_id: user_id, slug: slug }).lean()
       if (!journal) {
         return new Response(JSON.stringify({ message: "Journal not found" }), {
           status: 404,

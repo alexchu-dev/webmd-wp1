@@ -23,13 +23,13 @@ const arvo = Arvo({
   subsets: ["latin"],
 })
 
-export default function Blog({ slug }) {
+export default function Blog({ user_id, slug }) {
   const [blog, setBlog] = useState(null)
   const [open, setOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState("")
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/journals?slug=${slug}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/journals?user_id=${user_id}&slug=${slug}`)
       .then((res) => (res.ok ? res.json() : Promise.reject(res)))
       .then((data) => setBlog(data))
       .catch((error) => {
@@ -84,9 +84,9 @@ export default function Blog({ slug }) {
         <h1
           className={`${paris.className} text-3xl md:text-5xl my-4 md:my-12 font-semibold text-center`}
         >
-          {blog.title}
+          {blog?.title}
         </h1>
-        <p className="text-center font-bold">[{date.toISOString().substring(0, 10)}]</p>
+        <p className="text-center font-bold">[{date?.toISOString().substring(0, 10)}]</p>
         {/* <p className="text-center date">{date.toISOString().substring(0, 10)}</p> */}
       </div>
       <section className="mb-2">
@@ -101,13 +101,13 @@ export default function Blog({ slug }) {
           <label
             className={`${arvo.className} text-lg absolute top-1/3 right-0 bg-[#fcf6e775] p-2 md:p-4 rounded-tl-lg rounded-bl-lg`}
           >
-            {blog.destination.charAt(0).toUpperCase() +
-              blog.destination.slice(1)}
+            {blog?.destination?.charAt(0).toUpperCase() +
+              blog?.destination?.slice(1)}
           </label>
         </div>
         <div className="grid grid-cols-1 gap-4 max-w-screen-lg m-auto">
           <div className="gallery-card relative overflow-hidden content-center justify-center items-center flex">
-            <p className="mb-2 p-4 leading-loose">{parse(blog.content)}</p>
+            <p className="mb-2 p-4 leading-loose">{parse(blog?.content)}</p>
           </div>
         </div>
       </section>
