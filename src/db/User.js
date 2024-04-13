@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import UserSequence from "./UserSequence";
+import { UserSequence } from "./UserSequence";
 
 const UserSchema = new mongoose.Schema({
   user_id: {

@@ -339,6 +339,11 @@ export default function Nav() {
                   <MenuItem onClick={handleUserClose}>
                     <Link href="/dashboard">Dashboard</Link>
                   </MenuItem>
+                  {session?.user?.role === "admin" && (
+                    <MenuItem onClick={handleUserClose}>
+                      <Link href="/admin">Admin Panel</Link>
+                    </MenuItem>
+                  )}
                   <MenuItem onClick={handleUserClose}>
                     <Link
                       href="#"

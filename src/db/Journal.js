@@ -1,9 +1,9 @@
 import mongoose from "mongoose"
-import JournalSequence from "./JournalSequence"
+import { JournalSequence } from "./JournalSequence"
 
 const JournalSchema = new mongoose.Schema({
   post_id: {
-    type: Number
+    type: Number,
   },
   title: {
     type: String,
@@ -43,17 +43,21 @@ const JournalSchema = new mongoose.Schema({
   },
 })
 
-JournalSchema.pre('save', async function () {
+JournalSchema.pre("save", async function () {
   if (this.isNew) {
     try {
-      const seq = await JournalSequence.findByIdAndUpdate('post_id', { $inc: { seq: 1 } }, { new: true, upsert: true });
-      this.post_id = seq.seq;
-      console.log("JournalSequence ", this.user_id);
+      const seq = await JournalSequence.findByIdAndUpdate(
+        "post_id",
+        { $inc: { seq: 1 } },
+        { new: true, upsert: true }
+      )
+      this.post_id = seq.seq
+      console.log("JournalSequence ", this.post_id)
     } catch (error) {
-      throw error;
+      throw error
     }
   }
-});
+})
 
 export default mongoose.models.Journal ||
   mongoose.model("Journal", JournalSchema)
