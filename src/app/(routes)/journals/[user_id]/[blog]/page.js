@@ -10,10 +10,8 @@ export async function generateStaticParams() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/journals`)
   const journals = await res?.json()
   return journals?.map((blog) => ({
-    params: {
-      user_id: blog.user_id,
+      user_id: blog.user_id.toString(),
       blog: blog.slug,
-    },
   }))
 }
 // Passing the slug as a prop to the Destination component.
