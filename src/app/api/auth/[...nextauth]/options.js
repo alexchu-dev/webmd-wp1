@@ -114,12 +114,14 @@ export const options = {
     },
     async jwt({ token, user }) {
       if(user) {
+        // token.email = user.email;
         token.role = user.role
       }
       return token
     },
-    async session({ session, token }) {
+    async session({ session, token, }) {
       if (session?.user) {
+        // session.user.email = token.email;
         session.user.role = token.role
       }
       return session

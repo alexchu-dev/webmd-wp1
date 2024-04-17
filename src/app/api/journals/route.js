@@ -1,40 +1,6 @@
 import dbConnect from "@/lib/mongoose"
 import Journal from "@/db/Journal"
 
-export async function POST(request) {
-  await dbConnect()
-  const { title, slug, destination, image, user_id, date, excerpt, content } =
-    await request.json()
-  try {
-    const journal = new Journal({
-      title: title,
-      slug: slug,
-      destination: destination,
-      image: { url: image.url, alt: image.alt },
-      user_id: user_id,
-      date: date,
-      excerpt: excerpt,
-      content: content,
-    })
-    const savedJournal = await journal?.save()
-    console.log(savedJournal)
-    return new Response(JSON.stringify(savedJournal), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-  } catch (error) {
-    console.log(error)
-    return new Response(JSON.stringify({ message: error.message }), {
-      status: 400,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-  }
-}
-
 export async function GET(request) {
   await dbConnect()
 

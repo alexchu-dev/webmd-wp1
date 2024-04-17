@@ -27,7 +27,7 @@ export default function Footer() {
                   <Link href="/packages">Packages</Link>
                 </li>
                 <li>
-                  <Link href="/journal">Journal</Link>
+                  <Link href="/journals">Journals</Link>
                 </li>
                 <li>
                   <Link href="/tips">Travel Tips</Link>

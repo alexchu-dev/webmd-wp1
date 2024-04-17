@@ -10,6 +10,7 @@ import { packages } from "../data.js"
 import Carousel from "@/components/Carousel/index.js"
 import Calendar from "@/components/Calendar/index.js"
 import Swal from "sweetalert2"
+import Loading from "@/app/loading.js"
 
 const fetchPackageData = (packageId) => {
   return packages.find((p) => p.id === packageId)
@@ -33,7 +34,9 @@ export default function Package({ packageId }) {
 
   if (!packageData) {
     return (
-      <section className="max-w-screen-xl mx-auto p-20">Loading...</section>
+      <section className="max-w-screen-xl mx-auto p-20">
+        <Loading />
+      </section>
     )
   }
 

@@ -38,8 +38,8 @@ export default withAuth(
 
 export const config = {
   matcher: [
-    "/dashboard",
-    "/dashboard/:path*",
+    "/member",
+    "/user/:path*",
     "/admin",
     "/admin/:path*"
   ],

@@ -19,7 +19,7 @@ export default async function AdminPage() {
     </div>
   </section>
   } else {
-    redirect("/dashboard/")
+    redirect("/member/")
   }
   
   return null

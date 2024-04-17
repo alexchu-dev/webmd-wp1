@@ -9,7 +9,7 @@ const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
   // useSession hook with next-auth
   const session = useSession()
   const router = useRouter()
-  const callbackUrl = process.env.NEXT_PUBLIC_API_URL + "/dashboard"
+  const callbackUrl = process.env.NEXT_PUBLIC_API_URL + "/member/"
   const renderAuthButtons = () => {
     if (session?.status === "authenticated") {
       return (
@@ -150,7 +150,7 @@ const LoginSubmit = ({ email, password, setEmail, setPassword }) => {
     return <Loading />
   }
   if (session) {
-    router.push("/dashboard")
+    router.push("/member/")
   }
   
   return (

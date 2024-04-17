@@ -48,6 +48,8 @@ export default function Nav() {
     setIsOpen(false)
   }, [pathname])
 
+  console.log("Session: ", session )
+
   return (
     <>
       {/* Nav for mobile/tablet screens */}
@@ -135,7 +137,7 @@ export default function Nav() {
                 <Link href="/packages">Packages</Link>
               </li>
               <li className="mb-4">
-                <Link href="/journal">Journal</Link>
+                <Link href="/journals">Journals</Link>
               </li>
               <li className="mb-4">
                 <Link href="/tips">Tips</Link>
@@ -216,7 +218,7 @@ export default function Nav() {
                       }}
                     >
                       <MenuItem onClick={handleUserClose}>
-                        <Link href="/dashboard">Dashboard</Link>
+                        <Link href="/member/">Dashboard</Link>
                       </MenuItem>
                       <MenuItem onClick={handleUserClose}>
                         <Link
@@ -257,7 +259,7 @@ export default function Nav() {
             <Link href="/packages">Packages</Link>
           </li>
           <li className="ml-4">
-            <Link href="/journal">Journal</Link>
+            <Link href="/journals">Journals</Link>
           </li>
           <li className="ml-4">
             <Link href="/tips">Tips</Link>
@@ -337,7 +339,7 @@ export default function Nav() {
                   }}
                 >
                   <MenuItem onClick={handleUserClose}>
-                    <Link href="/dashboard">Dashboard</Link>
+                    <Link href="/member/">Dashboard</Link>
                   </MenuItem>
                   {session?.user?.role === "admin" && (
                     <MenuItem onClick={handleUserClose}>
