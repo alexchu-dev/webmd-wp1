@@ -13,7 +13,7 @@ export const POST = async (req, res) => {
 
   const buffer = Buffer.from(await file.arrayBuffer());
   const filename = Date.now() + file.name.replaceAll(" ", "_");
-  const imageUrl = `${process.env.NEXT_PUBLIC_API_URL}/uploads/${filename}`;
+  const imageUrl = `/uploads/${filename}`;
   try {
     await writeFile(
       path.join(process.cwd(), "/public/uploads/" + filename),
