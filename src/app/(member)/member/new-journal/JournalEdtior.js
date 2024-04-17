@@ -210,7 +210,7 @@ export default function JournalEditor() {
             automatic_uploads: true,
             file_picker_types: "image",
             relative_urls: false,
-            remove_script_host: false,
+            remove_script_host: true,
             document_base_url: `${process.env.NEXT_PUBLIC_API_URL}/`,
             images_upload_handler: uploadFile,
             content_style:
