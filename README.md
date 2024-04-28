@@ -8,13 +8,14 @@ To run the development server, please use pnpm instead of npm.
 Run pnpm i to install the packages before you run the development environment.
 
 ```bash
-pnpm i
-pnpm dev
+npm install
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Staging environment deployed Vercel
+
 Demo site: [https://up2244885.students.portsmouthuni.ac.uk/]
 
 Backup demo site: [https://webmd-wp1.vercel.app/]
