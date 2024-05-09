@@ -1,15 +1,24 @@
 import Destination from "./destination"
-// import { destinations } from "../data.js"
+
 
 /* Added generateMetaData for dynamic metadata. */
-// export async function generateMetadata({ params }, parent) {
-//   const pid = params.destination
-//   const data = destinations.find((p) => p.slug === pid);
-//   return {
-//     title: `${data.name}  | Ports Travel - Best Travel Agency in Portsmouth and Beyond`,
-//     description: "Explore our exclusive travel packages © Alex Chu 2024",
-//   }
-// }
+export async function generateMetadata({ params }, parent) {
+  const pid = params.destination
+  const destinations = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/destinations`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  const res = await destinations.json()
+  console.log("Destinations fetched", res)
+
+  const data = res?.find((p) => p.slug === pid);
+  return {
+    title: `${data.name}  | Ports Travel - Best Travel Agency in Portsmouth and Beyond`,
+    description: data.description,
+  }
+}
 
 /* The concept of this part is that, the route is app/destinations/[destination]/page.js,
     therefore the return object is { destination: destination.slug }. The object key must be the slug name.

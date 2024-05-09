@@ -11,7 +11,16 @@ import { Modal, Box } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 import IconButton from "@mui/material/IconButton"
 import Loading from "./loading.js"
-import { data } from "autoprefixer"
+import {
+  EmailIcon,
+  EmailShareButton,
+  FacebookIcon,
+  FacebookShareButton,
+  XIcon,
+  TwitterShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+} from "react-share"
 
 export default function Destination({ slug }) {
   const [destination, setDestination] = useState(null)
@@ -24,7 +33,6 @@ export default function Destination({ slug }) {
       .then((data) => {
         if (data) {
           setDestination(data)
-          console.log("Destination data fetched", data)
         } else {
           console.log("No data returned from API")
         }
@@ -69,16 +77,43 @@ export default function Destination({ slug }) {
           height={200}
           className="w-full h-[120px] md:h-[200px] object-cover"
         />
-        <div className="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-30 flex items-center justify-center rounded-xl">
+        <div className="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-30 flex flex-col gap-2 text-center items-center justify-center rounded-xl">
           <h1 className="text-5xl font-semibold text-white">
             {destination.name}
           </h1>
+          <div className="justify-center text-center flex flex-row gap-2">
+            <FacebookShareButton url={window.location.href} hashtag="#travel">
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <EmailShareButton
+              url={window.location.href}
+              subject={destination.name}
+              body=""
+            >
+              <EmailIcon size={32} round />
+            </EmailShareButton>
+            <TwitterShareButton
+              url={window.location.href}
+              title={destination.name}
+              hashtags={["travel"]}
+            >
+              <XIcon size={32} round />
+            </TwitterShareButton>
+            <WhatsappShareButton
+              url={window.location.href}
+              title={destination.name}
+              separator=":: "
+            >
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+          </div>
         </div>
       </div>
+
       <section className="mb-2">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {destination.images.map((image, index) => (
-            <>
+            <React.Fragment key={index}>
               {index === 1 && (
                 <>
                   <div className="gallery-card relative overflow-hidden content-center justify-center items-center flex">
@@ -102,7 +137,7 @@ export default function Destination({ slug }) {
                   onClick={() => handleOpen(image.url)}
                 />
               </div>
-            </>
+            </React.Fragment>
           ))}
         </div>
       </section>

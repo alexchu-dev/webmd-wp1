@@ -1,9 +1,22 @@
 import Blog from "./blog"
 
-export const metadata = {
-  title: "Journal | Ports Travel - Explore the World with Us",
-  description:
-    "Dive deep into our travel stories and tips from around the globe.",
+
+/* Added generateMetaData for dynamic metadata. */
+export async function generateMetadata({ params }, parent) {
+  const {user_id, blog} = params
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/journals?user_id=${user_id}&slug=${blog}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  const data = await response.json();
+
+  console.log("Journal fetched", data);
+  return {
+    title: `${data.title} | Ports Travel - Explore the World with Us`,
+    description: data.excerpt || 'Explore detailed stories and insights from this travel journal.',
+  };
 }
 
 export async function generateStaticParams() {

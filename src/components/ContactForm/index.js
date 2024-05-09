@@ -59,7 +59,7 @@ export default function ContactForm(props) {
 		console.log("Captcha value:", value);
 	};
 	const asyncScriptOnLoad = () => {
-		console.log("Google recaptcha loaded just fine");
+		console.log("Google recaptcha loaded.");
 	};
 
 	return (

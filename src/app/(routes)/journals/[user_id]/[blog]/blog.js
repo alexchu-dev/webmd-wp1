@@ -12,6 +12,16 @@ import { Modal, Box } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 import IconButton from "@mui/material/IconButton"
 import { Arvo, Parisienne } from "next/font/google"
+import {
+  EmailIcon,
+  EmailShareButton,
+  FacebookIcon,
+  FacebookShareButton,
+  XIcon,
+  TwitterShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+} from "react-share"
 
 const paris = Parisienne({
   weight: ["400"],
@@ -45,6 +55,7 @@ export default function Blog({ user_id, slug }) {
   }, [user_id, slug])
 
   const handleOpen = (image) => {
+    alert
     setSelectedImage(image)
     setOpen(true)
   }
@@ -99,7 +110,32 @@ export default function Blog({ user_id, slug }) {
         <p className="text-center font-bold">
           [{date?.toISOString().substring(0, 10)}]
         </p>
-        {/* <p className="text-center date">{date.toISOString().substring(0, 10)}</p> */}
+        <div className="justify-center m-auto text-center flex flex-row gap-2">
+          <FacebookShareButton url={window.location.href} hashtag="#travel">
+            <FacebookIcon size={32} round />
+          </FacebookShareButton>
+          <EmailShareButton
+            url={window.location.href}
+            subject={blog.title}
+            body=""
+          >
+            <EmailIcon size={32} round />
+          </EmailShareButton>
+          <TwitterShareButton
+            url={window.location.href}
+            title={blog.title}
+            hashtags={["travel", "journal"]}
+          >
+            <XIcon size={32} round />
+          </TwitterShareButton>
+          <WhatsappShareButton
+            url={window.location.href}
+            title={blog.title}
+            separator=":: "
+          >
+            <WhatsappIcon size={32} round />
+          </WhatsappShareButton>
+        </div>
       </div>
       <section className="mb-2">
         <div
@@ -119,7 +155,7 @@ export default function Blog({ user_id, slug }) {
         </div>
         <div className="grid grid-cols-1 gap-4 max-w-screen-lg m-auto">
           <div className="gallery-card relative overflow-hidden content-center justify-center items-center flex">
-            <p className="mb-2 p-4 leading-loose">{parse(blog?.content)}</p>
+            <div className="mb-2 p-4 leading-loose">{parse(blog?.content)}</div>
           </div>
         </div>
       </section>
