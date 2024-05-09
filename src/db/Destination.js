@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import DestinationSequence from "./DestinationSequence"
+import { DestinationSequence } from "./DestinationSequence"
 
 const DestinationSchema = new mongoose.Schema({
   dest_id: {
@@ -13,21 +13,23 @@ const DestinationSchema = new mongoose.Schema({
     type: String,
     required: [true],
   },
-  image: {
-    url: {
-      type: String,
-      required: [true, "Please provide the URL of the image."],
-    },
-    alt: {
-      type: String,
-      required: [true, "Please provide an alt text for the image."],
-    },
+  banner: {
+    type: String,
+    required: [true, "Banner image URL is required."],
   },
-  content: {
-    desc: {
-      type: String,
-    },
+  description: {
+    type: String,
   },
+  images: [
+    {
+      url: {
+        type: String,
+      },
+      alt: {
+        type: String,
+      },
+    },
+  ],
 })
 
 DestinationSchema.pre("save", async function () {

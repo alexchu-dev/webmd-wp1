@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth/next"
 import { options } from "../../auth/[...nextauth]/options"
 import bcryptjs from "bcryptjs"
 
-export async function GET(req) {
+export async function GET(request) {
   const session = await getServerSession(options)
   if (!session) {
     return new Response(JSON.stringify({ message: "Unauthorized" }), {
@@ -43,7 +43,7 @@ export async function GET(req) {
   }
 }
 
-export async function PUT(req) {
+export async function PUT(request) {
     const session = await getServerSession(options)
     if (!session) {
         return new Response(JSON.stringify({ message: "Unauthorized" }), {
@@ -55,7 +55,7 @@ export async function PUT(req) {
     }
     await dbConnect()
     try {
-        const { name, password } = await req.json();
+        const { name, password } = await request.json();
         const hashedPassword = await bcryptjs.hash(password, 10)
 
         const user = await User.findOneAndUpdate(
