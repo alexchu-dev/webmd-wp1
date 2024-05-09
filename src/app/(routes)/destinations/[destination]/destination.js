@@ -7,27 +7,31 @@ All the client side components are controlled here.
 "use client"
 import React, { useState, useEffect } from "react"
 import Image from "next/image.js"
-import { destinations } from "../data.js"
 import { Modal, Box } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 import IconButton from "@mui/material/IconButton"
-import { usePathname, useSearchParams } from "next/navigation"
 import Loading from "./loading.js"
+import { data } from "autoprefixer"
 
-/* Since NextJS 13 the getStaticProps and getStaticPaths are no longer working, therefore I am using another method in here, before creating an API for fetching. */
-const fetchDestinationData = (slug) => {
-  return destinations.find((destination) => destination.slug === slug)
-}
 export default function Destination({ slug }) {
   const [destination, setDestination] = useState(null)
   const [open, setOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState("")
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+
   useEffect(() => {
-    const data = fetchDestinationData(slug)
-    console.log(data)
-    setDestination(data)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/destinations?slug=${slug}`)
+      .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+      .then((data) => {
+        if (data) {
+          setDestination(data)
+          console.log("Destination data fetched", data)
+        } else {
+          console.log("No data returned from API")
+        }
+      })
+      .catch((error) => {
+        console.error("Failed to fetch destination data:", error)
+      })
   }, [slug])
 
   const handleOpen = (image) => {
@@ -46,8 +50,8 @@ export default function Destination({ slug }) {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    minWidth: "400px",
-    maxWidth: "90%",
+    minWidth: { xs: "90%", sm: "80%", md: "50%", lg: "40%" },
+    maxWidth: { xs: "90%", sm: "80%", md: "90%" },
     bgcolor: "background.paper",
     borderRadius: 2,
     boxShadow: 24,
@@ -57,7 +61,6 @@ export default function Destination({ slug }) {
 
   return (
     <section>
-      {/* <p>This page is {pathname} {searchParams}</p> */}
       <div className="relative mb-4">
         <Image
           src={destination.banner}
@@ -81,7 +84,7 @@ export default function Destination({ slug }) {
                   <div className="gallery-card relative overflow-hidden content-center justify-center items-center flex">
                     <p className="mb-2 p-4 leading-loose">
                       <sub className="text-3xl leading-3">“</sub>
-                      {destination.text1}
+                      {destination.description}
                       <sub className="text-3xl leading-3">”</sub>
                     </p>
                   </div>
@@ -90,13 +93,13 @@ export default function Destination({ slug }) {
               <div className="gallery-card relative overflow-hidden content-center justify-center items-center flex">
                 <Image
                   key={index}
-                  src={image}
-                  alt={`${destination.name} ${index + 1}`}
-                  title={`${destination.name} ${index + 1}`}
+                  src={image.url}
+                  alt={image.alt}
+                  title={image.alt}
                   width={640}
                   height={400}
                   className="rounded-xl mb-4 cursor-pointer object-cover h-[400px]"
-                  onClick={() => handleOpen(image)}
+                  onClick={() => handleOpen(image.url)}
                 />
               </div>
             </>

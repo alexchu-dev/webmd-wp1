@@ -29,7 +29,9 @@ export default function Blog({ user_id, slug }) {
   const [selectedImage, setSelectedImage] = useState("")
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/journals?user_id=${user_id}&slug=${slug}`)
+    fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/journals?user_id=${user_id}&slug=${slug}`
+    )
       .then((res) => (res.ok ? res.json() : Promise.reject(res)))
       .then((data) => setBlog(data))
       .catch((error) => {
@@ -40,7 +42,7 @@ export default function Blog({ user_id, slug }) {
           setBlog("error")
         }
       })
-  }, [slug])
+  }, [user_id, slug])
 
   const handleOpen = (image) => {
     setSelectedImage(image)
@@ -50,13 +52,21 @@ export default function Blog({ user_id, slug }) {
   const handleClose = () => setOpen(false)
 
   if (blog === "not-found") {
-    return <main className="max-w-screen-xl mx-auto p-20 text-center"><h1 className="text-2xl font-bold">Journal not found.</h1></main>;
+    return (
+      <main className="max-w-screen-xl mx-auto p-20 text-center">
+        <h1 className="text-2xl font-bold">Journal not found.</h1>
+      </main>
+    )
   }
-  
+
   if (blog === "error") {
-    return <main className="max-w-screen-xl mx-auto p-20"><h1 className="text-2xl font-bold">An error occurred.</h1></main>;
+    return (
+      <main className="max-w-screen-xl mx-auto p-20">
+        <h1 className="text-2xl font-bold">An error occurred.</h1>
+      </main>
+    )
   }
-  
+
   if (!blog) {
     return <Loading />
   }
@@ -86,7 +96,9 @@ export default function Blog({ user_id, slug }) {
         >
           {blog?.title}
         </h1>
-        <p className="text-center font-bold">[{date?.toISOString().substring(0, 10)}]</p>
+        <p className="text-center font-bold">
+          [{date?.toISOString().substring(0, 10)}]
+        </p>
         {/* <p className="text-center date">{date.toISOString().substring(0, 10)}</p> */}
       </div>
       <section className="mb-2">

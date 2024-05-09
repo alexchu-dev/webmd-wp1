@@ -2,7 +2,9 @@
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
 import DestinationForm from "./DestinationForm"
-import { Modal, Box, Button } from "@mui/material"
+import { Modal, Box } from "@mui/material"
+import Swal from "sweetalert2"
+import Link from "next/link"
 
 export default function DestinationsList() {
   const [destinations, setDestinations] = useState([])
@@ -39,10 +41,20 @@ export default function DestinationsList() {
   }
 
   const handleDelete = async (destId) => {
-    if (confirm("Are you sure you want to delete this destination?")) {
-      await fetch(`/api/destinations?dest_id=${destId}`, { method: "DELETE" })
-      setDestinations(destinations.filter((dest) => dest.dest_id !== destId))
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await fetch(`/api/destinations?dest_id=${destId}`, { method: "DELETE" })
+        setDestinations(destinations.filter((dest) => dest.dest_id !== destId))
+        Swal.fire("Deleted!", "Your destination has been deleted.", "success")
+      }
     }
+    )
   }
 
   return (
@@ -59,21 +71,31 @@ export default function DestinationsList() {
           Add New Destination
         </button>
       </div>
-      <div className="flex flex-wrap gap-8 justify-center">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center m-auto">
         {destinations.map((dest) => (
           <div key={dest.dest_id}>
             <div className="relative">
-              <Image
-                src={dest.banner}
-                title={dest.name}
-                alt={dest.name}
-                width={300}
-                height={200}
-                className="rounded-xl object-cover"
-              />
-              <div className="absolute bottom-0 left-0 bg-black rounded-bl-xl rounded-tr-xl font-bold bg-opacity-50 text-white p-4">
-                {dest.name}
-              </div>
+              <Link href="#" passHref legacyBehavior>
+                <a
+                  onClick={() => {
+                    setEditingDestinationId(dest.dest_id)
+                    setIsModalOpen(true)
+                    setAddingNew(false)
+                  }}
+                >
+                  <Image
+                    src={dest.banner}
+                    title={dest.name}
+                    alt={dest.name}
+                    width={400}
+                    height={200}
+                    className="h-[200px] rounded object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 bg-black rounded-bl-xl rounded-tr-xl font-bold bg-opacity-50 text-white p-4">
+                    {dest.name}
+                  </div>
+                </a>
+              </Link>
             </div>
             <div className="flex flex-row gap-2">
               <button
@@ -109,8 +131,8 @@ export default function DestinationsList() {
             left: "50%",
             transform: "translate(-50%, -50%)",
             width: "auto",
-            minWidth:  { xs: '90%', sm: '80%', md: '50%', lg: '40%'},
-            maxWidth: { xs: '90%', sm: '80%', md: '90%' },
+            minWidth: { xs: "90%", sm: "80%", md: "50%", lg: "40%" },
+            maxWidth: { xs: "90%", sm: "80%", md: "90%" },
             maxHeight: "90vh",
             bgcolor: "background.paper",
             borderRadius: 2,

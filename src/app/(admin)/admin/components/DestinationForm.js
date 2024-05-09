@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from "react"
+import Image from "next/image"
 
 export default function DestinationForm({
   onSave,
@@ -26,11 +27,17 @@ export default function DestinationForm({
     }
   }
 
+  const defaultImage = "/logo.png"
+
   const handleImageChange = (index, field, value) => {
     const updatedImages = [...formData.images]
     updatedImages[index][field] = value
     setFormData((prev) => ({ ...prev, images: updatedImages }))
   }
+
+  const handleImageError = (event) => {
+    event.target.src = defaultImage;
+  };
 
   const addImageField = () => {
     setFormData((prev) => ({
@@ -83,11 +90,22 @@ export default function DestinationForm({
         className="border border-gray-300 p-1 mb-4"
         required
       />
+      {formData.banner && (
+        <Image
+          src={formData.banner || defaultImage}
+          alt="Banner Image Preview"
+          onError={handleImageError}
+          width={400}
+          height={200}
+          className="w-full mb-4 max-h-80 object-cover"
+        />
+      )}
       <label htmlFor="desc" className="">
         Description
       </label>
       <textarea
         name="description"
+        rows={4}
         value={formData.description}
         onChange={handleChange}
         placeholder="The content you want to display on the destination page."
@@ -102,7 +120,7 @@ export default function DestinationForm({
               <button
                 type="button"
                 onClick={() => removeImageField(index)}
-                className="text-sm float-right text-zinc-600"
+                className="text-sm ml-4"
               >
                 [Remove]
               </button>
@@ -126,6 +144,17 @@ export default function DestinationForm({
             className="border border-gray-300 p-1 mb-6"
             required
           />
+
+          {image.url && (
+            <Image
+              src={image.url || defaultImage}
+              alt={image.alt || "Image preview"}
+              onError={handleImageError}
+              width={400}
+              height={200}
+              className="w-full mb-4 max-h-80 object-cover"
+            />
+          )}
         </div>
       ))}
       <button
@@ -133,7 +162,7 @@ export default function DestinationForm({
         type="button"
         onClick={addImageField}
       >
-        Add more image
+        Add more images
       </button>
       <div className="grid md:grid-cols-2 gap-4">
         <button className="bg-blue-500 text-white p-2 rounded-md" type="submit">
@@ -147,6 +176,11 @@ export default function DestinationForm({
           Cancel
         </button>
       </div>
+      <style jsx>{`
+        label {
+          font-weight: bold;
+        }
+      `}</style>
     </form>
   )
 }

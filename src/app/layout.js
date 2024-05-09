@@ -13,6 +13,7 @@ import Providers from "./providers.js"
 import Footer from "../components/Footer"
 import { Suspense } from "react"
 import Loading from "./loading"
+import CookieConsent from "@/components/CookieConsent"
 
 const zen = Zen_Kaku_Gothic_New({
   weight: ["400", "700", "900"],
@@ -35,6 +36,7 @@ export default function RootLayout({ children, session }) {
               <ThemeProvider theme={theme}>
                 <Header font={arvo.className} />
                 <Suspense fallback={<Loading />}>
+                  <CookieConsent />
                   <main className="relative max-w-screen-xl m-auto p-4">
                     {children}
                   </main>

@@ -4,15 +4,36 @@ import Destination from "@/db/Destination"
 export async function GET(request) {
   await dbConnect()
 
-  try {
-    const destinations = await Destination.find().lean()
+  const url = new URL(request.url);
+  const slug = url.searchParams.get("slug");
 
-    return new Response(JSON.stringify(destinations), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+  try {
+    if (slug) {
+      const destination = await Destination.findOne({ slug: slug }).lean();
+      if (destination) {
+        return new Response(JSON.stringify(destination), {
+          status: 200,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      } else {
+        return new Response(JSON.stringify({ message: "Destination not found" }), {
+          status: 404,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      }
+    } else {
+      const destinations = await Destination.find().lean();
+      return new Response(JSON.stringify(destinations), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
   } catch (error) {
     return new Response(JSON.stringify({ message: error.message }), {
       status: 500,

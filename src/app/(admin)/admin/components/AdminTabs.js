@@ -19,16 +19,16 @@ export default function AdminTabs() {
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Dashboard" value="1" />
-            <Tab label="Destinations" value="2" />
-            <Tab label="Packages" value="3" />
-            <Tab label="Journals" value="4" />
-            <Tab label="Users" value="5" />
+            <Tab label="Destinations" value="1" />
+            <Tab label="Packages" value="2" />
+            <Tab label="Journals" value="3" />
+            <Tab label="Users" value="4" />
           </TabList>
         </Box>
-        <TabPanel value="1">Item One</TabPanel>
-        <TabPanel value="2"><DestinationsList/></TabPanel>
-        <TabPanel value="3">Item Three</TabPanel>
+        <TabPanel value="1"><DestinationsList/></TabPanel>
+        <TabPanel value="2">Under construction</TabPanel>
+        <TabPanel value="3">Under construction</TabPanel>
+        <TabPanel value="4">Under construction</TabPanel>
       </TabContext>
     </Box>
   );
