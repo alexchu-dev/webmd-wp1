@@ -11,21 +11,34 @@
   "dependencies": {
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.0",
+    "@emotion/styled": "^11.11.5",
     "@fontsource/roboto": "^5.0.12",
     "@googlemaps/js-api-loader": "^1.16.6",
     "@mui/icons-material": "^5.15.11",
-    "@mui/material": "^5.15.11",
+    "@mui/lab": "^5.0.0-alpha.170",
+    "@mui/material": "^5.15.17",
     "@mui/material-nextjs": "^5.15.11",
+    "@tinymce/tinymce-react": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "cookies-next": "^4.1.1",
+    "dompurify": "^3.0.11",
     "dotenv": "^16.4.5",
+    "fs": "0.0.1-security",
+    "html-react-parser": "^5.1.10",
     "jotai": "^2.7.0",
     "keen-slider": "^6.8.6",
+    "mongoose": "^8.2.3",
     "next": "14.1.0",
+    "next-auth": "^4.24.7",
+    "nodemailer": "^6.9.13",
     "path": "^0.12.7",
     "react": "^18",
     "react-date-range": "2.0.0-alpha.4",
     "react-dom": "^18",
+    "react-google-recaptcha": "^3.1.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^5.0.1",
+    "react-share": "^5.1.0",
     "sweetalert2": "^11.10.6",
     "url": "^0.11.3",
     "webpack": "^5.90.3"
@@ -36,5 +49,10 @@
     "eslint-config-next": "14.1.0",
     "postcss": "^8",
     "tailwindcss": "^3.3.0"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }

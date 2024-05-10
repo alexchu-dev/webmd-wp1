@@ -4,22 +4,21 @@ University of Portsmouth
 */
 import Image from "next/image"
 import Link from "next/link"
-import Carousel from "./components/Carousel"
-import PopularDestinationCard from "./components/PopularDestinationCard"
-import DestinationOfWeek from "./components/DestinationOfWeek"
-import PopularPackages from "./components/PopularPackages"
-import SpecialDeals from "./components/SpecialDeals"
-import DiscountsSection from "./components/Discounts"
-import Testimonials from "./components/Testimonials"
-import ReviewComponent from "./components/Review"
-import LatestJournal from "./components/Journal"
-import ToolsProgramme from "./components/ToolsProgramme"
+import Carousel from "../components/Carousel"
+import PopularDestinationCard from "../components/PopularDestinationCard"
+import DestinationOfWeek from "../components/DestinationOfWeek"
+import PopularPackages from "../components/PopularPackages"
+import SpecialDeals from "../components/SpecialDeals"
+import DiscountsSection from "../components/Discounts"
+import Testimonials from "../components/Testimonials"
+import ReviewComponent from "../components/Review"
+import LatestJournal from "../components/Journal"
+import Programme from "../components/Programme"
 import { homeSliderData } from "./data-carousel.js"
 
 export default function Home() {
-
   return (
-    <main className="relative max-w-screen-xl m-auto p-4">
+    <section>
       {/* Hero Carousel Section using Carousel component, className as props to control style. */}
       <Carousel data={homeSliderData} className="rounded-xl" />
 
@@ -33,14 +32,13 @@ export default function Home() {
 
       <DiscountsSection />
 
+      <LatestJournal />
+
       <Testimonials />
 
       <ReviewComponent />
 
-      <LatestJournal />
-
-      <ToolsProgramme />
-      
-    </main>
+      <Programme />
+    </section>
   )
 }
