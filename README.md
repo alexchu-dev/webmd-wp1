@@ -4,7 +4,7 @@ This project was built with Next.js 14, a fullstack development framework.
 
 The project uses App Router with server side rendering.
 
-## Local view
+## Instruction
 
 To enable full functionalities of the project, you must have the .env file. This file is attached in the zip file for marking, however it will not be included in Github as it contains API credentials.
 
