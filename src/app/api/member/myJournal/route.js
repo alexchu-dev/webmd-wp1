@@ -86,3 +86,73 @@ export async function POST(request) {
     })
   }
 }
+
+export async function DELETE(request) {
+  const session = await getServerSession(options);
+  if (!session) {
+    return new Response(JSON.stringify({ message: "Unauthorized" }), {
+      status: 403,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+  await dbConnect();
+  try {
+    const { id } = await request.json();
+    
+    const journal = await Journal.findById(id);
+    if (!journal) {
+      return new Response(
+        JSON.stringify({ message: "Journal not found" }),
+        {
+          status: 404,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    }
+
+    const user = await User.findOne({ email: session.user.email });
+    if (!user) {
+      return new Response(
+        JSON.stringify({ message: "User not found" }),
+        {
+          status: 404,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    }
+
+    if (user.role !== "admin" && journal.user_id !== user.user_id) {
+      return new Response(
+        JSON.stringify({ message: "Unauthorized" }),
+        {
+          status: 403,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    }
+    
+    const deletedJournal = await Journal.findOneAndDelete({ _id: id });
+    console.log("Journal deleted!");
+    return new Response(JSON.stringify(deletedJournal), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ message: error.message }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+}
