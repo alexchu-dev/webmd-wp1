@@ -6,11 +6,17 @@ The project uses App Router with server side rendering.
 
 ## Instruction
 
+After cloning or unzipping the file, you may use development tools such as Visual Studio Code to open the folder.
+
 To enable full functionalities of the project, you must have the .env file. This file is attached in the zip file for marking, however it will not be included in Github as it contains API credentials.
 
 Below attached the env file template, open users can create their own API keys and secrets according to the services. (Google Maps API, Mongodb API, Gmail API, Github and Google OAuth)
 
 When you have the .env file ready, you should be able to run the development server.
+
+Open the terminal in VS Code, type the following to install the packages.
+
+If you have not installed node.js/ npm yet, please follow the instruction in this page https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
 ```bash
 npm install
